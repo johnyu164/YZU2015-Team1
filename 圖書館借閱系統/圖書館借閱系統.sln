@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "圖書館借閱系統", "圖書館借閱系統\圖書館借閱系統.vcxproj", "{E88C62B2-427A-46E2-9FEE-56B7C7E1955E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E88C62B2-427A-46E2-9FEE-56B7C7E1955E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E88C62B2-427A-46E2-9FEE-56B7C7E1955E}.Debug|Win32.Build.0 = Debug|Win32
+		{E88C62B2-427A-46E2-9FEE-56B7C7E1955E}.Release|Win32.ActiveCfg = Release|Win32
+		{E88C62B2-427A-46E2-9FEE-56B7C7E1955E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
