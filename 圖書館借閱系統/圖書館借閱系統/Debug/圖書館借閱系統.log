@@ -1,11 +1,11 @@
-﻿已經開始建置於 5/27/2015 10:05:41 AM。
+﻿已經開始建置於 5/28/2015 9:10:19 AM。
      1>節點 2 (Build 目標) 上的專案 "D:\GitRepo\YZU2015-Team1\圖書館借閱系統\圖書館借閱系統\圖書館借閱系統.vcxproj"。
      1>ClCompile:
          D:\visual2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
-     1>d:\gitrepo\yzu2015-team1\圖書館借閱系統\圖書館借閱系統\source.cpp(35): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\gitrepo\yzu2015-team1\圖書館借閱系統\圖書館借閱系統\source.cpp(60): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\visual2012\vc\include\string.h(200) : 請參閱 'strtok' 的宣告
-     1>d:\gitrepo\yzu2015-team1\圖書館借閱系統\圖書館借閱系統\source.cpp(56): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>d:\gitrepo\yzu2015-team1\圖書館借閱系統\圖書館借閱系統\source.cpp(66): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  d:\visual2012\vc\include\string.h(200) : 請參閱 'strtok' 的宣告
        Link:
          D:\visual2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GitRepo\YZU2015-Team1\圖書館借閱系統\Debug\圖書館借閱系統.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GitRepo\YZU2015-Team1\圖書館借閱系統\Debug\圖書館借閱系統.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GitRepo\YZU2015-Team1\圖書館借閱系統\Debug\圖書館借閱系統.lib" /MACHINE:X86 Debug\Source.obj
@@ -14,4 +14,4 @@
 
 建置成功。
 
-經過時間 00:00:01.44
+經過時間 00:00:01.49
