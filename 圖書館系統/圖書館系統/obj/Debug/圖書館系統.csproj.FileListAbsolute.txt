@@ -1,0 +1,6 @@
+D:\GitRepo\YZU2015-Team1\圖書館系統\圖書館系統\bin\Debug\圖書館系統.exe.config
+D:\GitRepo\YZU2015-Team1\圖書館系統\圖書館系統\obj\Debug\圖書館系統.csprojResolveAssemblyReference.cache
+D:\GitRepo\YZU2015-Team1\圖書館系統\圖書館系統\bin\Debug\圖書館系統.exe
+D:\GitRepo\YZU2015-Team1\圖書館系統\圖書館系統\bin\Debug\圖書館系統.pdb
+D:\GitRepo\YZU2015-Team1\圖書館系統\圖書館系統\obj\Debug\圖書館系統.exe
+D:\GitRepo\YZU2015-Team1\圖書館系統\圖書館系統\obj\Debug\圖書館系統.pdb
