@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Team1
 {
     [TestClass]
-    public class UnitTest1
+    public class LibraryTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void FindBookbyNumber()
         {
         }
     }

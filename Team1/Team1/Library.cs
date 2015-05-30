@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Team1
 {
-    struct BookInformation
+    public class BookInformation
     {
         public string booknumber;
         public string bookname;
@@ -64,25 +64,27 @@ namespace Team1
             bookinformation[Datacount - 1].borrowornot = Split[12];
         }
 
-        public void FindBookbyNumber(string number)
+        public BookInformation FindBookbyNumber(string number)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (String.Compare(bookinformation[i].booknumber, number) == 0)
                 {
-                    int borrowornot = Convert.ToInt32(bookinformation[i].borrowornot);
-                    if (CheckBorroworNot(borrowornot))
-                    {
-                        String Output = "書本編號:" + bookinformation[i].booknumber + " 書名:" + bookinformation[i].bookname + " 狀態:未借出";
-                        Console.WriteLine(Output);
-                    }
-                    else
-                    {
-                        String Output = "書本編號:" + bookinformation[i].booknumber + " 書名:" + bookinformation[i].bookname + " 狀態:已借出";
-                        Console.WriteLine(Output);
-                    }
+                    return bookinformation[i];
+                    //int borrowornot = Convert.ToInt32(bookinformation[i].borrowornot);
+                    //if (CheckBorroworNot(borrowornot))
+                    //{
+                    //    String Output = "書本編號:" + bookinformation[i].booknumber + " 書名:" + bookinformation[i].bookname + " 狀態:未借出";
+                    //    Console.WriteLine(Output);
+                    //}
+                    //else
+                    //{
+                    //    String Output = "書本編號:" + bookinformation[i].booknumber + " 書名:" + bookinformation[i].bookname + " 狀態:已借出";
+                    //    Console.WriteLine(Output);
+                    //}
                 }
             }
+            return null;
         }
 
         private bool CheckBorroworNot(int borrowornot)
