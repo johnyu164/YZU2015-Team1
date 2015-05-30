@@ -5,15 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-struct BookInformation
+namespace Team1
 {
-	public string booknumber;
-	public string bookname;
-	public string borrowornot;
-};
+    struct BookInformation
+    {
+        public string booknumber;
+        public string bookname;
+        public string borrowornot;
+    };
 
-namespace 圖書館系統
-{
+
     class Library
     {
         static void Main()
