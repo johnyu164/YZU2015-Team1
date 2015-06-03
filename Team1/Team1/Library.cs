@@ -7,39 +7,38 @@ using System.IO;
 
 namespace Team1
 {
-    public class BookInformation
-    {
-        public string booknumber;
-        public string bookname;
-        public string borrowornot;
-    };
-
-
     class Library
     {
-        static void Main()
-        {
-            FindBook fi = new FindBook();
-            fi.ReadData("Library.txt");
+        //static void Main()
+        //{
+        //    FindBook fi = new FindBook();
+        //    fi.ReadData("Library.txt");
 
-            System.Console.WriteLine("請輸入書本編號:");
-            string BookNumber = Console.ReadLine();
+        //    System.Console.WriteLine("請輸入書本編號:");
+        //    string BookNumber = Console.ReadLine();
 
-            fi.FindBookbyNumber(BookNumber);
+        //    fi.FindBookbyNumber(BookNumber);
 
-            Console.Read();
-        }
+        //    Console.Read();
+        //}
 
         
     }
 
     public class FindBook
     {
+        struct BookInformation
+        {
+            public string booknumber;
+            public string bookname;
+            public string borrowornot;
+        };
+
         BookInformation[] bookinformation = new BookInformation[3];
 
-        public void ReadData(String path)
+        public string FindBookbyNumber(String number)
         {
-            StreamReader sr = new StreamReader(path, Encoding.Default);
+            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
             String line;
             int Datacount = 0;
             while ((line = sr.ReadLine()) != null)
@@ -50,43 +49,26 @@ namespace Team1
                 }
                 else
                 {
-                    StoreData(Datacount, line);
+                    String[] Split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = Split[0];
+                    bookinformation[Datacount - 1].bookname = Split[6];
+                    bookinformation[Datacount - 1].borrowornot = Split[12];
+                    
                     Datacount++;
                 }
             }
-        }
 
-        private void StoreData(int Datacount ,String information)
-        {
-            String[] Split = information.Split(' ');
-            bookinformation[Datacount - 1].booknumber = Split[0];
-            bookinformation[Datacount - 1].bookname = Split[6];
-            bookinformation[Datacount - 1].borrowornot = Split[12];
-        }
-
-        public BookInformation FindBookbyNumber(string number)
-        {
+            string Sentence="";
             for (int i = 0; i < 3; i++)
             {
                 if (String.Compare(bookinformation[i].booknumber, number) == 0)
                 {
-                    return bookinformation[i];
-                    //int borrowornot = Convert.ToInt32(bookinformation[i].borrowornot);
-                    //if (CheckBorroworNot(borrowornot))
-                    //{
-                    //    String Output = "書本編號:" + bookinformation[i].booknumber + " 書名:" + bookinformation[i].bookname + " 狀態:未借出";
-                    //    Console.WriteLine(Output);
-                    //}
-                    //else
-                    //{
-                    //    String Output = "書本編號:" + bookinformation[i].booknumber + " 書名:" + bookinformation[i].bookname + " 狀態:已借出";
-                    //    Console.WriteLine(Output);
-                    //}
+                    Sentence = bookinformation[i].booknumber+bookinformation[i].bookname+bookinformation[i].borrowornot;
                 }
             }
-            return null;
-        }
 
+            return Sentence;
+        }
         private bool CheckBorroworNot(int borrowornot)
         {
             if (borrowornot == 0)
