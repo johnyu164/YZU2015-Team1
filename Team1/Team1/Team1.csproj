@@ -54,6 +54,7 @@
     <Compile Include="Library.cs" />
     <Compile Include="LibraryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReturnBook.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Library.txt">
