@@ -31,10 +31,11 @@ namespace Team1
         {
             public string booknumber;
             public string bookname;
+            public string writer;
             public string borrowornot;
         };
 
-        BookInformation[] bookinformation = new BookInformation[3];
+        BookInformation[] bookinformation = new BookInformation[4];
 
         public string FindBookbyNumber(String number)
         {
@@ -52,23 +53,95 @@ namespace Team1
                     String[] Split = line.Split(' ');
                     bookinformation[Datacount - 1].booknumber = Split[0];
                     bookinformation[Datacount - 1].bookname = Split[6];
-                    bookinformation[Datacount - 1].borrowornot = Split[12];
+                    bookinformation[Datacount - 1].writer = Split[12];
+                    bookinformation[Datacount - 1].borrowornot = Split[18];
                     
                     Datacount++;
                 }
             }
 
             string Sentence="";
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (String.Compare(bookinformation[i].booknumber, number) == 0)
                 {
-                    Sentence = bookinformation[i].booknumber+bookinformation[i].bookname+bookinformation[i].borrowornot;
+                    Sentence = bookinformation[i].booknumber+bookinformation[i].bookname+bookinformation[i].writer+bookinformation[i].borrowornot;
                 }
             }
 
             return Sentence;
         }
+
+        public int FindBookbyWriter(string WriterName)
+        {
+            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
+            String line;
+            int Datacount = 0;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (Datacount == 0)
+                {
+                    Datacount++;
+                }
+                else
+                {
+                    String[] Split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = Split[0];
+                    bookinformation[Datacount - 1].bookname = Split[6];
+                    bookinformation[Datacount - 1].writer = Split[12];
+                    bookinformation[Datacount - 1].borrowornot = Split[18];
+
+                    Datacount++;
+                }
+            }
+
+            int bookcount = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (String.Compare(bookinformation[i].writer, WriterName) == 0)
+                {
+                    bookcount++;
+                }
+            }
+
+            return bookcount;
+        }
+
+        public int FindBookbyBookname(string BookName)
+        {
+            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
+            String line;
+            int Datacount = 0;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (Datacount == 0)
+                {
+                    Datacount++;
+                }
+                else
+                {
+                    String[] Split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = Split[0];
+                    bookinformation[Datacount - 1].bookname = Split[6];
+                    bookinformation[Datacount - 1].writer = Split[12];
+                    bookinformation[Datacount - 1].borrowornot = Split[18];
+
+                    Datacount++;
+                }
+            }
+
+            int bookcount = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (String.Compare(bookinformation[i].bookname, BookName) == 0)
+                {
+                    bookcount++;
+                }
+            }
+
+            return bookcount;
+        }
+
         private bool CheckBorroworNot(int borrowornot)
         {
             if (borrowornot == 0)
