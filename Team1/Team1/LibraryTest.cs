@@ -7,10 +7,23 @@ namespace Team1
     public class LibraryTest
     {
         [TestMethod]
+
+        public void Login_Test()
+        {
+            Assert.AreEqual(true, Login.UserAuthentication("s1001555", "1234"));
+            Assert.AreEqual(true, Login.UserAuthentication("s1001234", "abcd"));
+            Assert.AreEqual(true, Login.UserAuthentication("s1009999", "88pp"));
+
+            Assert.AreEqual(false, Login.UserAuthentication("s100asda", "asdasd"));
+            Assert.AreEqual(false, Login.UserAuthentication("s13333da", "123fas"));
+        }
+
+        [TestMethod]
+
         public void FindBookbyNumber()
         {
             FindBook fi = new FindBook();
-            Assert.AreEqual("00001書本A作者a0",fi.FindBookbyNumber("00001"));
+            Assert.AreEqual("00001", fi.FindBookbyNumber("00001"));
         }
 
         [TestMethod]

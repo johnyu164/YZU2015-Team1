@@ -24,6 +24,33 @@ namespace Team1
 
         
     }
+    class Login
+    {
+        static internal bool UserAuthentication(String id, String pwd)
+        {
+            bool accountExist = false;
+
+            char[] delimiters = new char[] { '\t', ' ' };
+            StreamReader sr = new StreamReader("User.txt", Encoding.Default);
+            while (!sr.EndOfStream) // 每次讀取一行，直到檔尾            
+            {
+                string line = sr.ReadLine();    // 讀取文字到 line 變數
+                string[] item = line.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+                if (item[0].Equals(id))
+                {
+                    if (item[1].Equals(pwd))
+                    {
+                        accountExist = true;
+                        break;
+                    }
+                }
+            }
+            sr.Close();
+
+            return accountExist;
+        }
+    }
+
 
     public class FindBook
     {
@@ -36,6 +63,10 @@ namespace Team1
         };
 
         BookInformation[] bookinformation = new BookInformation[4];
+
+
+
+
 
         public string FindBookbyNumber(String number)
         {
