@@ -47,5 +47,11 @@ namespace Team1
         {
             Assert.AreEqual("001", BorrowInfo.Convert(1));
         }
+        [TestMethod]
+        public void ReturnBook_Load()
+        {
+            ReturnBook Rb = new ReturnBook();
+            Assert.AreEqual("00001      書本A      0", Rb.Load_Number("00001"));
+        }
     }
 }
