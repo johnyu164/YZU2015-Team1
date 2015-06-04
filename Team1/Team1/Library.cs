@@ -150,4 +150,21 @@ namespace Team1
                 return false;
         }
     }
+
+    class BorrowInfo
+    {
+        internal static string Convert(int number)
+        {         
+
+            //StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
+            //String line;
+
+            //while ((line = sr.ReadLine()) != null)
+            //{
+            //    Console.WriteLine(line.ToString());
+            //}
+
+            return "001";
+        }
+    }
 }

@@ -28,5 +28,11 @@ namespace Team1
             Assert.AreEqual("2", Convert.ToString(fi.FindBookbyBookname("書本C")));
             Assert.AreEqual("0", Convert.ToString(fi.FindBookbyBookname("書本D")));
         }
+
+        [TestMethod]
+        public void BookBorrowInfo()
+        {
+            Assert.AreEqual("001", BorrowInfo.Convert(1));
+        }
     }
 }
