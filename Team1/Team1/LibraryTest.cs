@@ -53,12 +53,17 @@ namespace Team1
             ReturnBook Rb = new ReturnBook();
             Assert.AreEqual("00001      書本A      0", Rb.Load_Number("00001"));
         }*/
-    
+
         [TestMethod]
         public void BorrowBook()
         {
+            BorrowBook b = new BorrowBook();
+            Assert.AreEqual("00001 書本A 作者a 0", Convert.ToString(b.checkborrow("00001")));
+            Assert.AreEqual("Error", Convert.ToString(b.checkborrow("00010")));
 
+            Assert.AreEqual("Success borrow book 00001", Convert.ToString(b.Borrow("00001")));
+            Assert.AreEqual("The book is borrowed!", Convert.ToString(b.Borrow("00002")));
+            Assert.AreEqual("We don't have this book!", Convert.ToString(b.Borrow("00010")));
         }
-    
     }
 }

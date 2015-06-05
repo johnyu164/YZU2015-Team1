@@ -200,11 +200,79 @@ namespace Team1
     }
 
 
-    class BorrowBook : FindBook
+    class BorrowBook
     {
 
+        struct BookInformation
+        {
+            public string booknumber;
+            public string bookname;
+            public string writer;
+            public string borrowornot;
+        };
+        private BookInformation[] bookinformation = new BookInformation[4];
 
+        public void readInfomation()
+        {
+            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
+            String line;
+            int Datacount = 0;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (Datacount == 0)
+                {
+                    Datacount++;
+                }
+                else
+                {
+                    String[] split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = split[0];
+                    bookinformation[Datacount - 1].bookname = split[1];
+                    bookinformation[Datacount - 1].writer = split[2];
+                    bookinformation[Datacount - 1].borrowornot = split[3];
 
+                    Datacount++;
+                }
+            }
+        }
+
+        public string checkborrow(string booknumber)
+        {
+            readInfomation();
+
+            string Sentence="";
+            for(int i=0 ; i<4 ; i++)
+            {
+                if (bookinformation[i].booknumber == booknumber)
+                    Sentence = bookinformation[i].booknumber+" "+bookinformation[i].bookname+" "+ bookinformation[i].writer+" "+ bookinformation[i].borrowornot;
+            }
+
+            if (Sentence == "")
+                Sentence = "Error";
+            return Sentence;
+        }
+
+        public string Borrow(string booknumber)
+        {
+            readInfomation();
+            string Sentence = "";
+            for (int i = 0; i < 4; i++)
+            {
+                if (bookinformation[i].booknumber == booknumber && bookinformation[i].borrowornot=="0")
+                {
+                    bookinformation[i].borrowornot = "1";
+                    Sentence= "Success borrow book " + booknumber;
+                }
+                else if (bookinformation[i].booknumber == booknumber && bookinformation[i].borrowornot == "1")
+                {
+                    Sentence = "The book is borrowed!" ;
+                }
+            }
+
+            if (Sentence=="")
+                Sentence = "We don't have this book!";
+            return Sentence;
+        }
     }
     
 }
