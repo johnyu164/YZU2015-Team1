@@ -19,9 +19,7 @@ namespace Team1
 
         BookInformation[] bookinformation = new BookInformation[4];
 
-
-
-        public string FindBookbyNumber(String number)
+        public FindBook()
         {
             StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
             String line;
@@ -43,7 +41,11 @@ namespace Team1
                     Datacount++;
                 }
             }
+        }
+        
 
+        public string FindBookbyNumber(String number)
+        {
             string Sentence = "";
             for (int i = 0; i < 4; i++)
             {
@@ -58,26 +60,6 @@ namespace Team1
 
         public int FindBookbyWriter(string WriterName)
         {
-            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
-            String line;
-            int Datacount = 0;
-            while ((line = sr.ReadLine()) != null)
-            {
-                if (Datacount == 0)
-                {
-                    Datacount++;
-                }
-                else
-                {
-                    String[] split = line.Split(' ');
-                    bookinformation[Datacount - 1].booknumber = split[0];
-                    bookinformation[Datacount - 1].bookname = split[1];
-                    bookinformation[Datacount - 1].writer = split[2];
-                    bookinformation[Datacount - 1].borrowornot = split[3];
-
-                    Datacount++;
-                }
-            }
 
             int bookcount = 0;
             for (int i = 0; i < 4; i++)
@@ -93,26 +75,6 @@ namespace Team1
 
         public int FindBookbyBookname(string BookName)
         {
-            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
-            String line;
-            int Datacount = 0;
-            while ((line = sr.ReadLine()) != null)
-            {
-                if (Datacount == 0)
-                {
-                    Datacount++;
-                }
-                else
-                {
-                    String[] split = line.Split(' ');
-                    bookinformation[Datacount - 1].booknumber = split[0];
-                    bookinformation[Datacount - 1].bookname = split[1];
-                    bookinformation[Datacount - 1].writer = split[2];
-                    bookinformation[Datacount - 1].borrowornot = split[3];
-
-                    Datacount++;
-                }
-            }
 
             int bookcount = 0;
             for (int i = 0; i < 4; i++)
