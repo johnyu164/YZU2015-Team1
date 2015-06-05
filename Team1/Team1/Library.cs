@@ -185,15 +185,15 @@ namespace Team1
     class BorrowInfo
     {
         internal static string Convert(int number)
-        {         
+        {
 
-            //StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
-            //String line;
+            StreamReader sr = new StreamReader("borrow.txt", Encoding.Default);
+            String line;
 
-            //while ((line = sr.ReadLine()) != null)
-            //{
-            //    Console.WriteLine(line.ToString());
-            //}
+            while ((line = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(line.ToString());
+            }
 
             return "001";
         }

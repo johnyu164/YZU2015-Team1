@@ -39,18 +39,52 @@ namespace Team1
 
     class BorrowInfo
     {
-        internal static string Convert(int number)
-        {         
+        struct borrowinformation
+        {
+            public string studentnumber;
+            public string booknumber;
+            public string dateborrow;
+            public string datereturn;
+        };
 
-            //StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
-            //String line;
+        borrowinformation[] borrowinfo = new borrowinformation[50];
+        int Datacount = 0;
 
-            //while ((line = sr.ReadLine()) != null)
-            //{
-            //    Console.WriteLine(line.ToString());
-            //}
+        public BorrowInfo()
+        {
+            StreamReader sr = new StreamReader("borrow.txt", Encoding.Default);
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (Datacount == 0)
+                {
+                    Datacount++;
+                }
+                else
+                {
+                    String[] split = line.Split(' ');
+                    borrowinfo[Datacount - 1].studentnumber = split[0];
+                    borrowinfo[Datacount - 1].booknumber = split[1];
+                    borrowinfo[Datacount - 1].dateborrow = split[2];
+                    borrowinfo[Datacount - 1].datereturn = split[3];
 
-            return "001";
+                    Datacount++;
+                }
+            }
+        }
+
+        public string findinformation(String number)
+        {
+            string Sentence = "";
+            for (int i = 0; i < Datacount; i++)
+            {
+                if (String.Compare(borrowinfo[i].studentnumber, number) == 0)
+                {
+                   Sentence = borrowinfo[i].studentnumber+ " " + borrowinfo[i].booknumber + " " + borrowinfo[i].dateborrow + " " + borrowinfo[i].datereturn;
+                }
+            }
+
+            return Sentence;
         }
     }
 
