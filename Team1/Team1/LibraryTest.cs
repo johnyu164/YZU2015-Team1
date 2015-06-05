@@ -64,7 +64,7 @@ namespace Team1
         public void BorrowBook()
         {
             BorrowBook b = new BorrowBook();
-            Assert.AreEqual("00001 書本A 作者a 0", Convert.ToString(b.checkborrow("00001")));
+            Assert.AreEqual("00001 書本A 作者a False", Convert.ToString(b.checkborrow("00001")));
             Assert.AreEqual("Error", Convert.ToString(b.checkborrow("00010")));
 
             Assert.AreEqual("Success borrow book 00001", Convert.ToString(b.Borrow("00001")));

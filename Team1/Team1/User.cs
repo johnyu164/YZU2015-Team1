@@ -55,11 +55,5 @@ namespace Team1
     }
 
 
-    class BorrowBook : FindBook
-    {
-
-
-
-    }
     
 }
