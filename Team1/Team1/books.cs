@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace Team1
 {
     public class FindBook
@@ -14,16 +15,15 @@ namespace Team1
             public string booknumber;
             public string bookname;
             public string writer;
-            public string borrowornot;
+            public bool borrowornot;
         };
 
-        BookInformation[] bookinformation = new BookInformation[4];
-
+        BookInformation[] bookinformation = new BookInformation[20];
+        int Datacount = 0;
         public FindBook()
         {
             StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
             String line;
-            int Datacount = 0;
             while ((line = sr.ReadLine()) != null)
             {
                 if (Datacount == 0)
@@ -36,64 +36,70 @@ namespace Team1
                     bookinformation[Datacount - 1].booknumber = split[0];
                     bookinformation[Datacount - 1].bookname = split[1];
                     bookinformation[Datacount - 1].writer = split[2];
-                    bookinformation[Datacount - 1].borrowornot = split[3];
+                    if (split[3] == "0")
+                        bookinformation[Datacount - 1].borrowornot = false;
+                    else
+                        bookinformation[Datacount - 1].borrowornot = true;
 
                     Datacount++;
                 }
             }
+            Datacount--;//修正最後一次while
         }
-        
+
 
         public string FindBookbyNumber(String number)
         {
             string Sentence = "";
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < Datacount; i++)
             {
                 if (String.Compare(bookinformation[i].booknumber, number) == 0)
                 {
-                    Sentence = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer + " " + bookinformation[i].borrowornot;
+                    Sentence = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer;
                 }
             }
 
             return Sentence;
         }
 
-        public int FindBookbyWriter(string WriterName)
+        public void FindBookbyWriter(string WriterName, int[] bookarr)
         {
 
             int bookcount = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < Datacount; i++)
             {
                 if (String.Compare(bookinformation[i].writer, WriterName, true) == 0)
                 {
+                    bookarr[bookcount] = i;
                     bookcount++;
                 }
             }
-
-            return bookcount;
         }
 
-        public int FindBookbyBookname(string BookName)
+        public void FindBookbyBookname(string BookName, int[] bookarr)
         {
-
             int bookcount = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < Datacount; i++)
             {
                 if (String.Compare(bookinformation[i].bookname, BookName, true) == 0)
                 {
+                    bookarr[bookcount] = i;
                     bookcount++;
                 }
             }
-
-            return bookcount;
         }
 
-        private bool CheckBorroworNot(int borrowornot)
+        public bool borrowbooks(int booknum)
         {
-            if (borrowornot == 0)
+            if (bookinformation[booknum].borrowornot)
+            {
+                bookinformation[booknum].borrowornot = true;
                 return true;
+            }
             else
                 return false;
         }
+
+
     }
 }

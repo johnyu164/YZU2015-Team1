@@ -23,23 +23,29 @@ namespace Team1
         public void FindBookbyNumber()
         {
             FindBook fi = new FindBook();
-            Assert.AreEqual("00001 書本A 作者a 0", fi.FindBookbyNumber("00001"));
+            Assert.AreEqual("00001 書本A 作者a", fi.FindBookbyNumber("00001"));
         }
 
         [TestMethod]
         public void FindBookbyWriter()
         {
             FindBook fi = new FindBook();
-            Assert.AreEqual("2", Convert.ToString(fi.FindBookbyWriter("作者a")));
-            Assert.AreEqual("1", Convert.ToString(fi.FindBookbyWriter("作者c")));
+            int[] numofbooks = new int[20];
+            fi.FindBookbyWriter("作者a", numofbooks);
+            Assert.AreEqual(0, numofbooks[0]);
+            Assert.AreEqual(4, numofbooks[1]);
+            fi.FindBookbyWriter("作者b", numofbooks);
+            Assert.AreEqual(1, numofbooks[0]);
         }
 
         [TestMethod]
         public void FindBookbyBookname()
         {
             FindBook fi = new FindBook();
-            Assert.AreEqual("1", Convert.ToString(fi.FindBookbyBookname("書本C")));
-            Assert.AreEqual("0", Convert.ToString(fi.FindBookbyBookname("書本E")));
+            int[] nameofbooks = new int[20];
+            fi.FindBookbyBookname("書本C", nameofbooks);
+            Assert.AreEqual(2, nameofbooks[0]);
+            Assert.AreEqual(3, nameofbooks[1]);
         }
 
         [TestMethod]
@@ -53,12 +59,12 @@ namespace Team1
             ReturnBook Rb = new ReturnBook();
             Assert.AreEqual("00001      書本A      0", Rb.Load_Number("00001"));
         }*/
-    
+
         [TestMethod]
         public void BorrowBook()
         {
 
         }
-    
+
     }
 }

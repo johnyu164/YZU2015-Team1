@@ -10,10 +10,11 @@ namespace Team1
  
     class Login
     {
+        
+
         static internal bool UserAuthentication(String id, String pwd)
         {
             bool accountExist = false;
-
             char[] delimiters = new char[] { '\t', ' ' };
             StreamReader sr = new StreamReader("User.txt", Encoding.Default);
             while (!sr.EndOfStream) // 每次讀取一行，直到檔尾            
