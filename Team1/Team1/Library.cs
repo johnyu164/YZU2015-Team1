@@ -81,11 +81,11 @@ namespace Team1
                 }
                 else
                 {
-                    String[] Split = line.Split(' ');
-                    bookinformation[Datacount - 1].booknumber = Split[0];
-                    bookinformation[Datacount - 1].bookname = Split[6];
-                    bookinformation[Datacount - 1].writer = Split[12];
-                    bookinformation[Datacount - 1].borrowornot = Split[18];
+                    String[] split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = split[0];
+                    bookinformation[Datacount - 1].bookname = split[1];
+                    bookinformation[Datacount - 1].writer = split[2];
+                    bookinformation[Datacount - 1].borrowornot = split[3];
                     
                     Datacount++;
                 }
@@ -96,7 +96,7 @@ namespace Team1
             {
                 if (String.Compare(bookinformation[i].booknumber, number) == 0)
                 {
-                    Sentence = bookinformation[i].booknumber+bookinformation[i].bookname+bookinformation[i].writer+bookinformation[i].borrowornot;
+                    Sentence = bookinformation[i].booknumber+" "+bookinformation[i].bookname+" "+ bookinformation[i].writer+" "+ bookinformation[i].borrowornot;
                 }
             }
 
@@ -116,11 +116,11 @@ namespace Team1
                 }
                 else
                 {
-                    String[] Split = line.Split(' ');
-                    bookinformation[Datacount - 1].booknumber = Split[0];
-                    bookinformation[Datacount - 1].bookname = Split[6];
-                    bookinformation[Datacount - 1].writer = Split[12];
-                    bookinformation[Datacount - 1].borrowornot = Split[18];
+                    String[] split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = split[0];
+                    bookinformation[Datacount - 1].bookname = split[1];
+                    bookinformation[Datacount - 1].writer = split[2];
+                    bookinformation[Datacount - 1].borrowornot = split[3];
 
                     Datacount++;
                 }
@@ -129,7 +129,7 @@ namespace Team1
             int bookcount = 0;
             for (int i = 0; i < 4; i++)
             {
-                if (String.Compare(bookinformation[i].writer, WriterName) == 0)
+                if (String.Compare(bookinformation[i].writer, WriterName, true) == 0)
                 {
                     bookcount++;
                 }
@@ -151,11 +151,11 @@ namespace Team1
                 }
                 else
                 {
-                    String[] Split = line.Split(' ');
-                    bookinformation[Datacount - 1].booknumber = Split[0];
-                    bookinformation[Datacount - 1].bookname = Split[6];
-                    bookinformation[Datacount - 1].writer = Split[12];
-                    bookinformation[Datacount - 1].borrowornot = Split[18];
+                    String[] split = line.Split(' ');
+                    bookinformation[Datacount - 1].booknumber = split[0];
+                    bookinformation[Datacount - 1].bookname = split[1];
+                    bookinformation[Datacount - 1].writer = split[2];
+                    bookinformation[Datacount - 1].borrowornot = split[3];
 
                     Datacount++;
                 }
@@ -164,7 +164,7 @@ namespace Team1
             int bookcount = 0;
             for (int i = 0; i < 4; i++)
             {
-                if (String.Compare(bookinformation[i].bookname, BookName) == 0)
+                if (String.Compare(bookinformation[i].bookname, BookName,true) == 0)
                 {
                     bookcount++;
                 }
@@ -198,4 +198,13 @@ namespace Team1
             return "001";
         }
     }
+
+
+    class BorrowBook : FindBook
+    {
+
+
+
+    }
+    
 }
