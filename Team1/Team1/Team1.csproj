@@ -50,16 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="bookinformation.cs" />
-    <Compile Include="Library.cs" />
+    <Compile Include="books.cs" />
+    <Compile Include="Borrow.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="LibraryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReturnBook.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Library.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="User.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
