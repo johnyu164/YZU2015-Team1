@@ -30,22 +30,22 @@ namespace Team1
         public void FindBookbyWriter()
         {
             FindBook fi = new FindBook();
-            int[] numofbooks = new int[20];
-            fi.FindBookbyWriter("作者a", numofbooks);
-            Assert.AreEqual(0, numofbooks[0]);
-            Assert.AreEqual(4, numofbooks[1]);
-            fi.FindBookbyWriter("作者b", numofbooks);
-            Assert.AreEqual(1, numofbooks[0]);
+            int[] booknum = new int[20];
+            fi.FindBookbyWriter("作者a", booknum);
+            Assert.AreEqual(0, booknum[0]);
+            Assert.AreEqual(4, booknum[1]);
+            fi.FindBookbyWriter("作者b", booknum);
+            Assert.AreEqual(1, booknum[0]);
         }
 
         [TestMethod]
         public void FindBookbyBookname()
         {
             FindBook fi = new FindBook();
-            int[] nameofbooks = new int[20];
-            fi.FindBookbyBookname("書本C", nameofbooks);
-            Assert.AreEqual(2, nameofbooks[0]);
-            Assert.AreEqual(3, nameofbooks[1]);
+            int[] booknum = new int[20];
+            fi.FindBookbyBookname("書本C", booknum);
+            Assert.AreEqual(2, booknum[0]);
+            Assert.AreEqual(3, booknum[1]);
         }
 
         [TestMethod]
@@ -67,7 +67,8 @@ namespace Team1
             Assert.AreEqual("00003 書本C 作者c 0", Rb.Load_Number("00003"));
             Assert.AreEqual("00004 書本C 作者c 0", Rb.Load_Number("00004"));
 
-            Assert.AreEqual("No Find the Book !", Rb.Load_Number("00010"));
+
+            Assert.AreEqual("No Find the Book !" , Rb.Load_Number("00010"));
 
             //Can't actual return
             Assert.AreEqual("書本未被借出，無法歸還!!", Rb.Can_Return(Rb.Load_Number("00001")));
@@ -75,7 +76,7 @@ namespace Team1
 
             Assert.AreEqual("書本已歸還", Rb.Can_Return(Rb.Load_Number("00002")));
 
-            Assert.AreEqual("沒在目錄中", Rb.Can_Return(Rb.Load_Number("000011")));
+            Assert.AreEqual("沒在目錄中", Rb.Can_Return(Rb.Load_Number("00011")));
         }
 
         [TestMethod]

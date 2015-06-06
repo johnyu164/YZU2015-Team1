@@ -27,9 +27,9 @@ namespace Team1
         public string Can_Return(String borrowornot)
         {
             String[] Split = borrowornot.Split(' ');
-            if (Split[12] == "1")
+            if (Split[3] == "1")
                 return "書本已歸還";
-            else if (Split[12] == "0")
+            else if (Split[3] == "0")
                 return "書本未被借出，無法歸還!!";
 
             return "沒在目錄中";
