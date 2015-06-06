@@ -74,7 +74,7 @@ namespace Team1
                     bookcount++;
                 }
             }
-            bookarr[bookcount] = -1;//array 在-1結束
+            bookarr[bookcount] = -1;//array 在-1結束 
         }
 
         public void FindBookbyBookname(string BookName, int[] bookarr)
