@@ -74,6 +74,7 @@ namespace Team1
                     bookcount++;
                 }
             }
+            bookarr[bookcount] = -1;//array 在-1結束
         }
 
         public void FindBookbyBookname(string BookName, int[] bookarr)
@@ -87,6 +88,7 @@ namespace Team1
                     bookcount++;
                 }
             }
+            bookarr[bookcount] = -1;
         }
 
         public bool borrowbooks(int booknum)

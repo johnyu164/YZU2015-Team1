@@ -30,22 +30,22 @@ namespace Team1
         public void FindBookbyWriter()
         {
             FindBook fi = new FindBook();
-            int[] numofbooks = new int[20];
-            fi.FindBookbyWriter("作者a", numofbooks);
-            Assert.AreEqual(0, numofbooks[0]);
-            Assert.AreEqual(4, numofbooks[1]);
-            fi.FindBookbyWriter("作者b", numofbooks);
-            Assert.AreEqual(1, numofbooks[0]);
+            int[] booknum = new int[20];
+            fi.FindBookbyWriter("作者a", booknum);
+            Assert.AreEqual(0, booknum[0]);
+            Assert.AreEqual(4, booknum[1]);
+            fi.FindBookbyWriter("作者b", booknum);
+            Assert.AreEqual(1, booknum[0]);
         }
 
         [TestMethod]
         public void FindBookbyBookname()
         {
             FindBook fi = new FindBook();
-            int[] nameofbooks = new int[20];
-            fi.FindBookbyBookname("書本C", nameofbooks);
-            Assert.AreEqual(2, nameofbooks[0]);
-            Assert.AreEqual(3, nameofbooks[1]);
+            int[] booknum = new int[20];
+            fi.FindBookbyBookname("書本C", booknum);
+            Assert.AreEqual(2, booknum[0]);
+            Assert.AreEqual(3, booknum[1]);
         }
 
         [TestMethod]
