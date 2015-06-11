@@ -66,11 +66,11 @@ namespace Team1
         {
             ReturnBook Rb = new ReturnBook();
             //Load the actual number 
-            Assert.AreEqual("00002 書本B 作者b 1", Rb.Load_Number("00002"));
-            Assert.AreEqual("00001 書本A 作者a 0", Rb.Load_Number("00001"));
-            Assert.AreEqual("00003 書本C 作者c 0", Rb.Load_Number("00003"));
-            Assert.AreEqual("00003 書本C 作者c 0", Rb.Load_Number("00003"));
-            Assert.AreEqual("00004 書本C 作者c 0", Rb.Load_Number("00004"));
+            Assert.AreEqual("00002 書本B 作者b 1 2015/6/6 2015/7/6", Rb.Load_Number("00002"));
+            Assert.AreEqual("00001 書本A 作者a 0 0 0", Rb.Load_Number("00001"));
+            Assert.AreEqual("00003 書本C 作者c 0 0 0", Rb.Load_Number("00003"));
+            Assert.AreEqual("00003 書本C 作者c 0 0 0", Rb.Load_Number("00003"));
+            Assert.AreEqual("00004 書本C 作者c 1 2015/7/7 2015/7/6", Rb.Load_Number("00004"));
 
 
             Assert.AreEqual("No Find the Book !" , Rb.Load_Number("00010"));
@@ -82,6 +82,8 @@ namespace Team1
             Assert.AreEqual("書本已歸還", Rb.Can_Return(Rb.Load_Number("00002")));
 
             Assert.AreEqual("沒在目錄中", Rb.Can_Return(Rb.Load_Number("00011")));
+
+            Assert.AreEqual("逾期1天,要繳交罰鍰50元", Rb.Can_Return(Rb.Load_Number("00004")));
         }
 
         [TestMethod]

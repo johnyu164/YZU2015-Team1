@@ -18,7 +18,7 @@ namespace Team1
                 String[] Split = line.Split(' ');
                 if (Split[0] == number)
                 {
-                    return Split[0] + " " + Split[1] + " " + Split[2] + " " + Split[3];
+                    return Split[0] + " " + Split[1] + " " + Split[2] + " " + Split[3] + " " + Split[4] + " " + Split[5];
                 }         
             }
             return "No Find the Book !";    
@@ -28,7 +28,21 @@ namespace Team1
         {
             String[] Split = borrowornot.Split(' ');
             if (Split[3] == "1")
-                return "書本已歸還";
+            {
+                DateTime ReturnTime,ShouldReturnTime;
+                ReturnTime = Convert.ToDateTime(Split[4]);
+                ShouldReturnTime = Convert.ToDateTime(Split[5]);
+
+                if (DateTime.Compare(ShouldReturnTime, ReturnTime) >= 0)
+                    return "書本已歸還";
+                else
+                {
+                    TimeSpan Total = ReturnTime.Subtract(ShouldReturnTime);
+                    int Fines = Convert.ToInt32(Total.Days) * 50;
+                    string ReturnString = "逾期" + Total.Days.ToString() + "天,要繳交罰鍰" + Fines.ToString() + "元";
+                    return ReturnString;
+                }
+            }
             else if (Split[3] == "0")
                 return "書本未被借出，無法歸還!!";
 

@@ -9,19 +9,6 @@ namespace Team1
 {
     class Library
     {
-        //static void Main()
-        //{
-        //    FindBook fi = new FindBook();
-        //    fi.ReadData("Library.txt");
-
-        //    System.Console.WriteLine("請輸入書本編號:");
-        //    string BookNumber = Console.ReadLine();
-
-        //    fi.FindBookbyNumber(BookNumber);
-
-        //    Console.Read();
-        //}
-
         
     }
     class Login
@@ -51,7 +38,6 @@ namespace Team1
         }
     }
 
-
     public class FindBook
     {
         struct BookInformation
@@ -63,10 +49,6 @@ namespace Team1
         };
 
         BookInformation[] bookinformation = new BookInformation[4];
-
-
-
-
 
         public string FindBookbyNumber(String number)
         {
@@ -172,21 +154,12 @@ namespace Team1
 
             return bookcount;
         }
-
-        private bool CheckBorroworNot(int borrowornot)
-        {
-            if (borrowornot == 0)
-                return true;
-            else
-                return false;
-        }
     }
 
     class BorrowInfo
     {
         internal static string Convert(int number)
         {
-
             StreamReader sr = new StreamReader("borrow.txt", Encoding.Default);
             String line;
 
@@ -202,7 +175,6 @@ namespace Team1
 
     class BorrowBook
     {
-
         struct BookInformation
         {
             public string booknumber;
@@ -273,6 +245,5 @@ namespace Team1
                 Sentence = "We don't have this book!";
             return Sentence;
         }
-    }
-    
+    }   
 }
