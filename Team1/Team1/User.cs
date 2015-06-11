@@ -10,11 +10,21 @@ namespace Team1
  
     class Login
     {
-        
+        private string id;
+        private string pwd;
+        private string competence;
+        private string borrownumber;
+        private bool accountExist = false;
 
-        static internal bool UserAuthentication(String id, String pwd)
+        public Login(string ID,string PWD)
         {
-            bool accountExist = false;
+            id = ID;
+            pwd = PWD;
+            Log_In();
+        }
+
+        public void Log_In()
+        {
             char[] delimiters = new char[] { '\t', ' ' };
             StreamReader sr = new StreamReader("User.txt", Encoding.Default);
             while (!sr.EndOfStream) // 每次讀取一行，直到檔尾            
@@ -26,13 +36,34 @@ namespace Team1
                     if (item[1].Equals(pwd))
                     {
                         accountExist = true;
+                        competence = item[2];
+                        borrownumber = item[3];
+
                         break;
                     }
                 }
             }
-            sr.Close();
+            sr.Close();       
+        }
 
-            return accountExist;
+        public string getID()
+        {
+            return id;
+        }
+
+        public string getcompetence()
+        {
+             return competence;
+        }
+    
+        public string getborrownumber()
+        {
+            return borrownumber;
+        }
+
+        public bool UserAuthentication()
+        {
+             return accountExist;
         }
     }
 

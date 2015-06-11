@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System;
 
 namespace Team1
 {
     class BorrowBook
     {
 
+        private BorrowInfo u = new BorrowInfo();
+
+        
         struct BookInformation
         {
             public string booknumber;
@@ -46,6 +49,7 @@ namespace Team1
                     Datacount++;
                 }
             }
+            
         }
 
         public string checkborrow(string booknumber)

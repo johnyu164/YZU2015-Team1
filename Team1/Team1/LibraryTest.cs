@@ -10,12 +10,17 @@ namespace Team1
 
         public void Login_Test()
         {
-            Assert.AreEqual(true, Login.UserAuthentication("s1001555", "1234"));
-            Assert.AreEqual(true, Login.UserAuthentication("s1001234", "abcd"));
-            Assert.AreEqual(true, Login.UserAuthentication("s1009999", "88pp"));
+            Login l1 = new Login("s1001555", "1234");
+            Assert.AreEqual(true, l1.UserAuthentication());
+            Login l2 = new Login("s1001234", "abcd");
+            Assert.AreEqual(true, l2.UserAuthentication());
+            Login l3 = new Login("s1009999", "88pp");
+            Assert.AreEqual(true,l3.UserAuthentication());
 
-            Assert.AreEqual(false, Login.UserAuthentication("s100asda", "asdasd"));
-            Assert.AreEqual(false, Login.UserAuthentication("s13333da", "123fas"));
+            Login l4 = new Login("s100asda", "asdasd");
+            Assert.AreEqual(false, l4.UserAuthentication());
+            Login l5 = new Login("s1001555", "5678");
+            Assert.AreEqual(false, l5.UserAuthentication());
         }
 
         [TestMethod]
