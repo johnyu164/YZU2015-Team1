@@ -34,7 +34,7 @@ namespace Team1
                 ShouldReturnTime = Convert.ToDateTime(Split[5]);
 
                 if (DateTime.Compare(ShouldReturnTime, ReturnTime) >= 0)
-                    return "書本已歸還";
+                    return "書本尚未到期";
                 else
                 {
                     TimeSpan Total = ReturnTime.Subtract(ShouldReturnTime);
