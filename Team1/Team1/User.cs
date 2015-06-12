@@ -16,12 +16,14 @@ namespace Team1
         private string borrownumber;
         private bool accountExist = false;
 
-        public Login(string ID,string PWD)
+
+        public void FindAccount(string ID,string PWD)
         {
             id = ID;
             pwd = PWD;
             Log_In();
         }
+
 
         public void Log_In()
         {

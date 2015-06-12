@@ -10,17 +10,25 @@ namespace Team1
 
         public void Login_Test()
         {
-            Login l1 = new Login("s1001555", "1234");
-            Assert.AreEqual(true, l1.UserAuthentication());
-            Login l2 = new Login("s1001234", "abcd");
-            Assert.AreEqual(true, l2.UserAuthentication());
-            Login l3 = new Login("s1009999", "88pp");
-            Assert.AreEqual(true,l3.UserAuthentication());
+            Login test1 = new Login();
+            test1.FindAccount("s1001555", "1234");
+            Assert.AreEqual(true, test1.UserAuthentication());
 
-            Login l4 = new Login("s100asda", "asdasd");
-            Assert.AreEqual(false, l4.UserAuthentication());
-            Login l5 = new Login("s1001555", "5678");
-            Assert.AreEqual(false, l5.UserAuthentication());
+            Login test2 = new Login();
+            test2.FindAccount("s1001234", "abcd");
+
+            Assert.AreEqual(true, test2.UserAuthentication());
+            Login test3 = new Login(); 
+            test3.FindAccount("s1009999", "88pp");
+            Assert.AreEqual(true,test3.UserAuthentication());
+
+            Login test4 = new Login();
+            test4.FindAccount("s100asda", "asdasd");
+            Assert.AreEqual(false, test4.UserAuthentication());
+
+            Login test5 = new Login(); 
+            test5.FindAccount("s1001555", "5678");
+            Assert.AreEqual(false, test5.UserAuthentication());
         }
 
         [TestMethod]
@@ -91,8 +99,9 @@ namespace Team1
         [TestMethod]
         public void BorrowBook()
         {
-            Login l1 = new Login("s1001555", "1234");
-            BorrowBook b = new BorrowBook(l1.getID(), l1.getpassword(), "00001");
+            Login test1 = new Login();
+            test1.FindAccount("s1001555", "1234");
+            BorrowBook b = new BorrowBook(test1.getID(), test1.getpassword(), "00001");
 
             //Assert.AreEqual("00001 書本A 作者a False", Convert.ToString(b.checkborrow("00001")));
             //Assert.AreEqual("Error", Convert.ToString(b.checkborrow("00010")));
