@@ -9,7 +9,14 @@ namespace Team1
 {
     class ReturnBook
     {
-        public string Load_Number(String number)
+        private string id;
+        private string pwd;
+        private string competence;
+        private string returnbooknumber;
+        private FindBook bookdata = new FindBook();
+        private Login user = new Login();
+
+        public string Load_Number_for_Library(String number)
         {
             StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
             String line;
@@ -23,6 +30,31 @@ namespace Team1
             }
             return "No Book Found!";    
         }
+
+        public string Load_Number_for_borrow(String number)
+        {
+            StreamReader sr = new StreamReader("borrow.txt", Encoding.Default);
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                String[] Split = line.Split(' ');
+                if (Split[1] == number)
+                {
+                    return Split[0];
+
+                    //改檔 borrow.txt 把後面日期給消掉
+                }
+            }
+            return "No Book Found!";
+        }
+
+        public void getUser_for_ReturnBook(String account)
+        {
+            returnbooknumber = user.getborrownumber();
+
+        }
+
+
 
         public string Can_Return(String borrowornot)
         {
