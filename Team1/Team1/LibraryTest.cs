@@ -73,17 +73,17 @@ namespace Team1
             Assert.AreEqual("00004 書本C 作者c 1 2015/7/7 2015/8/7", Rb.Load_Number("00004"));
 
 
-            Assert.AreEqual("No Find the Book !" , Rb.Load_Number("00010"));
+            Assert.AreEqual("No Book Found!", Rb.Load_Number("00010"));
 
             //Can't actual return
             Assert.AreEqual("書本未被借出，無法歸還!!", Rb.Can_Return(Rb.Load_Number("00001")));
             Assert.AreEqual("書本未被借出，無法歸還!!", Rb.Can_Return(Rb.Load_Number("00003")));
 
-            Assert.AreEqual("書本尚未到期", Rb.Can_Return(Rb.Load_Number("00002")));
+            Assert.AreEqual("書本已歸還", Rb.Can_Return(Rb.Load_Number("00002")));
 
             Assert.AreEqual("沒在目錄中", Rb.Can_Return(Rb.Load_Number("00011")));
 
-            Assert.AreEqual("書本尚未到期", Rb.Can_Return(Rb.Load_Number("00002")));
+            Assert.AreEqual("書本已歸還", Rb.Can_Return(Rb.Load_Number("00002")));
             Assert.AreEqual("逾期1天,要繳交罰鍰50元", Rb.Can_Return(Rb.Load_Number("00006")));
                 
         }
