@@ -118,9 +118,11 @@ namespace Team1
                 if (String.Compare(borrowinfo[i].studentnumber, number) == 0)
                 {
                     Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber + " " + borrowinfo[i].dateborrow + " " + borrowinfo[i].datereturn;
-                    //Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber ;
                 }
             }
+
+            if (Sentence == "")
+                Sentence = "帳號不存在!";
 
             return Sentence;
         }
