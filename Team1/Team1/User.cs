@@ -51,6 +51,11 @@ namespace Team1
             return id;
         }
 
+        public string getpassword()
+        {
+            return pwd;
+        }
+
         public string getcompetence()
         {
              return competence;

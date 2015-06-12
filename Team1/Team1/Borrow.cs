@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System;
 
 namespace Team1
 {
     class BorrowBook
     {
-
-        private BorrowInfo u = new BorrowInfo();
-
+        private string id;
+        private string pwd;
+        private string competence;
+        private string borrowbooknumber;
+        private FindBook f = new FindBook();
         
         struct BookInformation
         {
@@ -21,75 +22,44 @@ namespace Team1
             public string writer;
             public bool borrowornot;
         };
-        private BookInformation[] bookinformation = new BookInformation[5];
+        private BookInformation bookinformation = new BookInformation();
    
 
-        public void readInfomation()
+        public BorrowBook(string ID , string PWD, string num)
         {
-            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
-            String line;
-            int Datacount = 0;
-            while ((line = sr.ReadLine()) != null)
-            {
-                if (Datacount == 0)
-                {
-                    Datacount++;
-                }
-                else
-                {
-                    String[] split = line.Split(' ');
-                    bookinformation[Datacount - 1].booknumber = split[0];
-                    bookinformation[Datacount - 1].bookname = split[1];
-                    bookinformation[Datacount - 1].writer = split[2];
-                    if (split[3] == "0")
-                        bookinformation[Datacount - 1].borrowornot = false;
-                    else
-                        bookinformation[Datacount - 1].borrowornot = true;
+            Login u = new Login(ID,PWD);
+            id = u.getID();
+            pwd = u.getpassword();
+            competence = u.getcompetence();
+            borrowbooknumber = u.getborrownumber();
 
-                    Datacount++;
-                }
-            }
-            
-        }
-
-        public string checkborrow(string booknumber)
-        {
-            readInfomation();
-
-            string Sentence = "";
-            for (int i = 0; i < 4; i++)
-            {
-                if (bookinformation[i].booknumber == booknumber)
-                    Sentence = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer + " " + bookinformation[i].borrowornot;
-            }
-
-            if (Sentence == "")
-                Sentence = "Error";
-            return Sentence;
         }
 
         public string Borrow(string booknumber)
-        {
-            readInfomation();
+        {            
             string Sentence = "";
-            for (int i = 0; i < 4; i++)
-            {
-                if (bookinformation[i].booknumber == booknumber )
-                {
-                    if (!bookinformation[i].borrowornot) { 
-                        bookinformation[i].borrowornot = true;
-                        Sentence = "Success borrow book " + booknumber;
-                    }
+            string borrowdate = DateTime.Now.ToShortDateString();
+            string temp_borrowdate=DateTime.Now.ToString("yyyy-MM-dd");
+            string returndate = "";
+            String[] split = temp_borrowdate.Split('-');
+            returndate = split[0] + "/" + split[1] + "/" + split[2];
 
-                    else if (bookinformation[i].borrowornot)
-                    
-                        Sentence = "The book is borrowed!";
-                    
-                }
-            }
-
+            Sentence=f.FindBookbyNumber(booknumber);
             if (Sentence == "")
                 Sentence = "We don't have this book!";
+            else
+            {
+                Sentence = "";
+                if (f.borrowbooks(booknumber))
+                {
+                    Sentence = "Success borrow book " + booknumber;
+
+                    //寫檔
+                }
+                else if (!f.borrowbooks(booknumber))
+                    Sentence = "The book is borrowed!";
+            }
+                    
             return Sentence;
         }
     }

@@ -37,9 +37,9 @@ namespace Team1
                     bookinformation[Datacount - 1].bookname = split[1];
                     bookinformation[Datacount - 1].writer = split[2];
                     if (split[3] == "0")
-                        bookinformation[Datacount - 1].borrowornot = false;
-                    else
                         bookinformation[Datacount - 1].borrowornot = true;
+                    else
+                        bookinformation[Datacount - 1].borrowornot = false;
 
                     Datacount++;
                 }
@@ -53,7 +53,7 @@ namespace Team1
             string Sentence = "";
             for (int i = 0; i < Datacount; i++)
             {
-                if (String.Compare(bookinformation[i].booknumber, number) == 0)
+                if (String.Compare(bookinformation[i].booknumber, number , true) == 0)
                 {
                     Sentence = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer;
                 }
@@ -68,7 +68,7 @@ namespace Team1
             int bookcount = 0;
             for (int i = 0; i < Datacount; i++)
             {
-                if (String.Compare(bookinformation[i].writer, WriterName, true) == 0)
+                if (String.Compare(bookinformation[i].writer, WriterName) == 0)
                 {
                     bookarr[bookcount] = i;
                     bookcount++;
@@ -91,17 +91,21 @@ namespace Team1
             bookarr[bookcount] = -1;
         }
 
-        public bool borrowbooks(int booknum)
+        public bool borrowbooks(string booknum)
         {
-            if (bookinformation[booknum].borrowornot)
+            for (int i = 0; i < 20; i++)
             {
-                bookinformation[booknum].borrowornot = true;
-                return true;
+                if (bookinformation[i].booknumber == booknum)
+                {
+                    if (bookinformation[i].borrowornot)
+                        return true;
+                    if (!bookinformation[i].borrowornot)
+                        return false;
+                }
             }
-            else
-                return false;
-        }
 
+            return false;
+        }
 
     }
 }

@@ -70,7 +70,7 @@ namespace Team1
             Assert.AreEqual("00001 書本A 作者a 0 0 0", Rb.Load_Number("00001"));
             Assert.AreEqual("00003 書本C 作者c 0 0 0", Rb.Load_Number("00003"));
             Assert.AreEqual("00003 書本C 作者c 0 0 0", Rb.Load_Number("00003"));
-            Assert.AreEqual("00004 書本C 作者c 1 2015/7/7 2015/7/6", Rb.Load_Number("00004"));
+            Assert.AreEqual("00004 書本C 作者c 1 2015/7/7 2015/8/7", Rb.Load_Number("00004"));
 
 
             Assert.AreEqual("No Find the Book !" , Rb.Load_Number("00010"));
@@ -89,9 +89,11 @@ namespace Team1
         [TestMethod]
         public void BorrowBook()
         {
-            BorrowBook b = new BorrowBook();
-            Assert.AreEqual("00001 書本A 作者a False", Convert.ToString(b.checkborrow("00001")));
-            Assert.AreEqual("Error", Convert.ToString(b.checkborrow("00010")));
+            Login l1 = new Login("s1001555", "1234");
+            BorrowBook b = new BorrowBook(l1.getID(), l1.getpassword(), "00001");
+
+            //Assert.AreEqual("00001 書本A 作者a False", Convert.ToString(b.checkborrow("00001")));
+            //Assert.AreEqual("Error", Convert.ToString(b.checkborrow("00010")));
 
             Assert.AreEqual("Success borrow book 00001", Convert.ToString(b.Borrow("00001")));
             Assert.AreEqual("The book is borrowed!", Convert.ToString(b.Borrow("00002")));
