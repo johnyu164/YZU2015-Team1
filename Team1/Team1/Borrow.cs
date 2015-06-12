@@ -13,7 +13,7 @@ namespace Team1
         private string pwd;
         private string competence;
         private string borrowbooknumber;
-        private FindBook booktofind = new FindBook();
+        private FindBook bookdata = new FindBook();
         private Login user = new Login();
         /*struct BookInformation
         {
@@ -33,7 +33,9 @@ namespace Team1
             pwd = user.getpassword();
             competence = user.getcompetence();
             borrowbooknumber = user.getborrownumber();
-
+            
+            
+             
         }
 
         public string Borrow(string booknumber)
@@ -45,19 +47,19 @@ namespace Team1
             String[] split = temp_borrowdate.Split('-');
             returndate = split[0] + "/" + split[1] + "/" + split[2];
 
-            Sentence=booktofind.FindBookbyNumber(booknumber);
+            Sentence=bookdata.FindBookbyNumber(booknumber);
             if (Sentence == "")
                 Sentence = "We don't have this book!";
             else
             {
                 Sentence = "";
-                if (booktofind.borrowbooks(booknumber))
+                if (bookdata.borrowbooks(booknumber))
                 {
                     Sentence = "Success borrow book " + booknumber;
 
                     //寫檔
                 }
-                else if (!booktofind.borrowbooks(booknumber))
+                else if (!bookdata.borrowbooks(booknumber))
                     Sentence = "The book is borrowed!";
             }
                     

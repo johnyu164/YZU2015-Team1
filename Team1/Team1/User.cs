@@ -24,7 +24,6 @@ namespace Team1
             Log_In();
         }
 
-
         public void Log_In()
         {
             char[] delimiters = new char[] { '\t', ' ' };
