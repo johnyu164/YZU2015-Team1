@@ -65,9 +65,9 @@ namespace Team1
         public void BookBorrowInfo()
         {
             BorrowInfo fi = new BorrowInfo();
-            Assert.AreEqual("003 00004", fi.findinformation("003"));
-            Assert.AreEqual("002 00002", fi.findinformation("002"));
-            Assert.AreEqual("001 00001", fi.findinformation("001"));
+            Assert.AreEqual("003 00004 06/02 06/17", fi.findinformation("003"));
+            Assert.AreEqual("002 00002 06/05 06/19", fi.findinformation("002"));
+            Assert.AreEqual("001 00001 06/01 06/14", fi.findinformation("001"));
         }
         [TestMethod]
         public void ReturnBook_Load()

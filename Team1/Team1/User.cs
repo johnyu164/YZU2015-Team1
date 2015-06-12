@@ -85,7 +85,7 @@ namespace Team1
         };
 
         borrowinformation[] borrowinfo = new borrowinformation[50];
-        int Datacount = 1;
+        int Datacount = 0;
 
         public BorrowInfo()
         {
@@ -102,6 +102,8 @@ namespace Team1
                     String[] split = line.Split(' ');
                     borrowinfo[Datacount - 1].studentnumber = split[0];
                     borrowinfo[Datacount - 1].booknumber = split[1];
+                    borrowinfo[Datacount - 1].dateborrow = split[2];
+                    borrowinfo[Datacount - 1].datereturn = split[3];
 
                     Datacount++;
                 }
@@ -115,8 +117,8 @@ namespace Team1
             {
                 if (String.Compare(borrowinfo[i].studentnumber, number) == 0)
                 {
-                    Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber;
-                    Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber ;
+                    Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber + " " + borrowinfo[i].dateborrow + " " + borrowinfo[i].datereturn;
+                    //Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber ;
                 }
             }
 
