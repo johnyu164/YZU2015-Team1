@@ -94,9 +94,6 @@ namespace Team1
             Login l1 = new Login("s1001555", "1234");
             BorrowBook b = new BorrowBook(l1.getID(), l1.getpassword(), "00001");
 
-            //Assert.AreEqual("00001 書本A 作者a False", Convert.ToString(b.checkborrow("00001")));
-            //Assert.AreEqual("Error", Convert.ToString(b.checkborrow("00010")));
-
             Assert.AreEqual("Success borrow book 00001", Convert.ToString(b.Borrow("00001")));
             Assert.AreEqual("The book is borrowed!", Convert.ToString(b.Borrow("00002")));
             Assert.AreEqual("We don't have this book!", Convert.ToString(b.Borrow("00010")));
