@@ -9,13 +9,7 @@ namespace Team1
 {
     class ReturnBook
     {
-        private string id;
-        private string pwd;
-        private string competence;
-        private string returnbooknumber;
-        private FindBook bookdata = new FindBook();
-        private Login user = new Login();
-
+        private string ReturnBook_number;
         public string Load_Number_for_Library(String number)
         {
             StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
@@ -48,10 +42,20 @@ namespace Team1
             return "No Book Found!";
         }
 
-        public void getUser_for_ReturnBook(String account)
+        public string getUser_for_ReturnBook(String account)
         {
-            returnbooknumber = user.getborrownumber();
-
+            StreamReader sr = new StreamReader("User.txt", Encoding.Default);
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                String[] Split = line.Split(' ');
+                if (Split[0] == account)
+                {
+                    //改檔 User.txt 把書本數目更改，書單更改
+                    return Split[0] + "書本已歸還";
+                }
+            }
+            return "No Book Found!";
         }
 
 
