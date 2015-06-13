@@ -9,7 +9,6 @@ namespace Team1
 {
     class ReturnBook
     {
-        private string ReturnBook_number;
         public string Load_Number_for_Library(String number)
         {
             StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
@@ -27,7 +26,7 @@ namespace Team1
 
         public string Load_Number_for_borrow(String number)
         {
-            StreamReader sr = new StreamReader("..\\..\\borrow.txt", Encoding.Default);
+            StreamReader sr = new StreamReader("..\\..\\history.txt", Encoding.Default);
             String line;
             while ((line = sr.ReadLine()) != null)
             {
@@ -36,7 +35,7 @@ namespace Team1
                 {
                     return Split[0];
 
-                    //改檔 borrow.txt 把後面日期給消掉
+                    //改檔 history.txt 把後面日期給消掉
                 }
             }
             return "No Book Found!";
@@ -67,15 +66,16 @@ namespace Team1
             {
                 if (Split[3] == "1")
                 {
-                    DateTime ReturnTime, ShouldReturnTime;
-                    ReturnTime = Convert.ToDateTime(Split[4]);
+                    DateTime BorrowTime, ShouldReturnTime;
+                    BorrowTime = Convert.ToDateTime(Split[4]);
                     ShouldReturnTime = Convert.ToDateTime(Split[5]);
+                    DateTime Now = DateTime.Now;               
 
-                    if (DateTime.Compare(ShouldReturnTime, ReturnTime) >= 0)
-                        return "書本已歸還";
+                    if (DateTime.Compare(ShouldReturnTime,Now) >= 0)
+                        return "書本尚未逾期";
                     else
                     {
-                        TimeSpan Total = ReturnTime.Subtract(ShouldReturnTime);
+                        TimeSpan Total = Now.Subtract(ShouldReturnTime);
                         int Fines = Convert.ToInt32(Total.Days) * 50;
                         string ReturnString = "逾期" + Total.Days.ToString() + "天,要繳交罰鍰" + Fines.ToString() + "元";
                         return ReturnString;

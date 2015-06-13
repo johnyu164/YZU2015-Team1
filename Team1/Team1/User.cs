@@ -89,7 +89,7 @@ namespace Team1
 
         public BorrowInfo()
         {
-            StreamReader sr = new StreamReader("..\\..\\borrow.txt", Encoding.Default);
+            StreamReader sr = new StreamReader("..\\..\\history.txt", Encoding.Default);
             String line;
             while ((line = sr.ReadLine()) != null)
             {

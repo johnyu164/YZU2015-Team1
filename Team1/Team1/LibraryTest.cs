@@ -100,11 +100,10 @@ namespace Team1
             Assert.AreEqual("書本未被借出，無法歸還!!", Rb.Can_Return(Rb.Load_Number_for_Library("00001")));
             Assert.AreEqual("書本未被借出，無法歸還!!", Rb.Can_Return(Rb.Load_Number_for_Library("00003")));
 
-            Assert.AreEqual("書本已歸還", Rb.Can_Return(Rb.Load_Number_for_Library("00002")));
+            Assert.AreEqual("書本尚未逾期", Rb.Can_Return(Rb.Load_Number_for_Library("00002")));
 
             Assert.AreEqual("沒在目錄中", Rb.Can_Return(Rb.Load_Number_for_Library("00011")));
 
-            Assert.AreEqual("書本已歸還", Rb.Can_Return(Rb.Load_Number_for_Library("00002")));
             Assert.AreEqual("逾期1天,要繳交罰鍰50元", Rb.Can_Return(Rb.Load_Number_for_Library("00006")));
                 
         }
