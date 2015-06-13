@@ -27,7 +27,7 @@ namespace Team1
         public void Log_In()
         {
             char[] delimiters = new char[] { '\t', ' ' };
-            StreamReader sr = new StreamReader("User.txt", Encoding.Default);
+            StreamReader sr = new StreamReader("..\\..\\User.txt", Encoding.Default);
             while (!sr.EndOfStream) // 每次讀取一行，直到檔尾            
             {
                 string line = sr.ReadLine();    // 讀取文字到 line 變數
@@ -89,7 +89,7 @@ namespace Team1
 
         public BorrowInfo()
         {
-            StreamReader sr = new StreamReader("borrow.txt", Encoding.Default);
+            StreamReader sr = new StreamReader("..\\..\\borrow.txt", Encoding.Default);
             String line;
             while ((line = sr.ReadLine()) != null)
             {
