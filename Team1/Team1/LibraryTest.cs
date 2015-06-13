@@ -104,7 +104,9 @@ namespace Team1
 
             Assert.AreEqual("沒在目錄中", Rb.Can_Return(Rb.Load_Number_for_Library("00011")));
 
-            Assert.AreEqual("逾期1天,要繳交罰鍰50元", Rb.Can_Return(Rb.Load_Number_for_Library("00006")));
+            DateTime testtime = new DateTime(2015,6,13);
+
+            Assert.AreEqual("逾期1天,要繳交罰鍰50元", Rb.CanReturnInSpecificDate(Rb.Load_Number_for_Library("00006"),testtime));
                 
         }
 

@@ -57,32 +57,29 @@ namespace Team1
             return "No Book Found!";
         }
 
-
-
-        public string Can_Return(String borrowornot)
+        public string CanReturnInSpecificDate(String borrowornot, DateTime now)
         {
-            String[] Split = borrowornot.Split(' ');
+            String[] split = borrowornot.Split(' ');
             try
             {
-                if (Split[3] == "1")
+                if (split[3] == "1")
                 {
-                    DateTime BorrowTime, ShouldReturnTime;
-                    BorrowTime = Convert.ToDateTime(Split[4]);
-                    ShouldReturnTime = Convert.ToDateTime(Split[5]);
-                    DateTime Now = DateTime.Now;               
+                    DateTime borrowTime, shouldReturnTime;
+                    borrowTime = Convert.ToDateTime(split[4]);
+                    shouldReturnTime = Convert.ToDateTime(split[5]);
 
-                    if (DateTime.Compare(ShouldReturnTime,Now) >= 0)
+                    if (DateTime.Compare(shouldReturnTime, now) >= 0)
                         return "書本尚未逾期";
                     else
                     {
-                        TimeSpan Total = Now.Subtract(ShouldReturnTime);
-                        int Fines = Convert.ToInt32(Total.Days) * 50;
-                        string ReturnString = "逾期" + Total.Days.ToString() + "天,要繳交罰鍰" + Fines.ToString() + "元";
+                        TimeSpan total = now.Subtract(shouldReturnTime);
+                        int Fines = Convert.ToInt32(total.Days) * 50;
+                        string ReturnString = "逾期" + total.Days.ToString() + "天,要繳交罰鍰" + Fines.ToString() + "元";
                         return ReturnString;
                     }
                 }
-                else if (Split[3] == "0")
-                    return "書本未被借出，無法歸還!!"; 
+                else if (split[3] == "0")
+                    return "書本未被借出，無法歸還!!";
             }
             catch (System.IndexOutOfRangeException)
             {
@@ -90,6 +87,12 @@ namespace Team1
             }
 
             return "沒在目錄中";
+
+        }
+
+        public string Can_Return(String borrowornot)
+        {
+            return CanReturnInSpecificDate(borrowornot, DateTime.Now);
         }
     }
 }
