@@ -25,7 +25,7 @@ namespace Team1
         int Datacount = 0;
         public FindBook()
         {
-            StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
+            StreamReader sr = new StreamReader("Library.txt", Encoding.Default);
             String line;
             while ((line = sr.ReadLine()) != null)
             {

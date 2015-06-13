@@ -44,7 +44,7 @@ namespace Team1
 
         public string getUser_for_ReturnBook(String account)
         {
-            StreamReader sr = new StreamReader("..\\..\\User.txt", Encoding.Default);
+            StreamReader sr = new StreamReader("User.txt", Encoding.Default);
             String line;
             while ((line = sr.ReadLine()) != null)
             {
