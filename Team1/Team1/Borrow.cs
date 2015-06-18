@@ -15,16 +15,6 @@ namespace Team1
         private string borrowbooknumber;
         private FindBook bookdata = new FindBook();
         private Login user = new Login();
-        /*struct BookInformation
-        {
-            public string booknumber;
-            public string bookname;
-            public string writer;
-            public bool borrowornot;
-        };
-        private BookInformation bookinformation = new BookInformation();
-   
-        */
 
         public BorrowBook(string ID , string PWD, string num)
         {
@@ -32,20 +22,13 @@ namespace Team1
             id = user.getID();
             pwd = user.getpassword();
             competence = user.getcompetence();
-            borrowbooknumber = user.getborrownumber();
-            
-            
-             
+            borrowbooknumber = user.getborrownumber();  
         }
 
-        public string Borrow(string booknumber)
+        public string Borrow(string booknumber , DateTime borrowdate)
         {            
             string Sentence = "";
-            string borrowdate = DateTime.Now.ToShortDateString();
-            string temp_borrowdate=DateTime.Now.ToString("yyyy-MM-dd");
-            string returndate = "";
-            String[] split = temp_borrowdate.Split('-');
-            returndate = split[0] + "/" + split[1] + "/" + split[2];
+            string returndate = borrowdate.AddDays(30).ToShortDateString();
 
             Sentence=bookdata.FindBookbyNumber(booknumber);
             if (Sentence == "")
@@ -55,7 +38,7 @@ namespace Team1
                 Sentence = "";
                 if (bookdata.borrowbooks(booknumber))
                 {
-                    Sentence = "Success borrow book " + booknumber;
+                    Sentence = "Success borrow book " + booknumber + ",Return day:" + returndate;
 
                     //寫檔
                 }
