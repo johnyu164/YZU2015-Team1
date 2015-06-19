@@ -69,9 +69,6 @@ namespace Team1
             Assert.AreEqual("002 00002 2015/7/7 2015/8/7", bi.findinformation("002"));
             Assert.AreEqual("003 00004 2015/7/17 2015/8/17", bi.findinformation("003"));
 
-            //Assert.AreEqual("004 00005 2015/7/7 2015/8/7", bi.findinformation("004"));
-            //Assert.AreEqual("004 00006 2015/7/9 2015/8/9", bi.findinformation("004"));
-
             Assert.AreEqual("帳號不存在!", bi.findinformation("005"));
             Assert.AreEqual("帳號不存在!", bi.findinformation("006"));
         }
@@ -116,10 +113,11 @@ namespace Team1
             Login test1 = new Login();
             test1.FindAccount("s1001555", "1234");
             BorrowBook b = new BorrowBook(test1.getID(), test1.getpassword(), "00001");
+            DateTime borrowdate = new DateTime(2015,6,18);
 
-            Assert.AreEqual("Success borrow book 00001", Convert.ToString(b.Borrow("00001")));
-            Assert.AreEqual("The book is borrowed!", Convert.ToString(b.Borrow("00002")));
-            Assert.AreEqual("We don't have this book!", Convert.ToString(b.Borrow("00010")));
+            Assert.AreEqual("Success borrow book 00001,Return day:2015/7/18", Convert.ToString(b.Borrow("00001", borrowdate)));
+            Assert.AreEqual("The book is borrowed!", Convert.ToString(b.Borrow("00002",borrowdate)));
+            Assert.AreEqual("We don't have this book!", Convert.ToString(b.Borrow("00010",borrowdate)));
         }
     }
 }

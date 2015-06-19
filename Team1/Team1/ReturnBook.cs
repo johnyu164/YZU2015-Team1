@@ -67,8 +67,7 @@ namespace Team1
             {
                 if (split[3] == "1")
                 {
-                    DateTime borrowTime, shouldReturnTime;
-                    borrowTime = Convert.ToDateTime(split[4]);
+                    DateTime shouldReturnTime;
                     shouldReturnTime = Convert.ToDateTime(split[5]);
 
                     if (DateTime.Compare(shouldReturnTime, now) >= 0)
