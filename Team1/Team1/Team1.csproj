@@ -53,6 +53,7 @@
     <Compile Include="books.cs" />
     <Compile Include="Borrow.cs" />
     <Compile Include="ReturnBook.cs" />
+    <Compile Include="Search.cs" />
     <Compile Include="User.cs" />
     <Compile Include="LibraryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

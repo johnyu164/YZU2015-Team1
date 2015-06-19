@@ -72,6 +72,7 @@ namespace Team1
             Assert.AreEqual("帳號不存在!", bi.findinformation("005"));
             Assert.AreEqual("帳號不存在!", bi.findinformation("006"));
         }
+
         [TestMethod]
         public void ReturnBook_Load()
         {
@@ -118,6 +119,17 @@ namespace Team1
             Assert.AreEqual("Success borrow book 00001,Return day:2015/7/18", Convert.ToString(b.Borrow("00001", borrowdate)));
             Assert.AreEqual("The book is borrowed!", Convert.ToString(b.Borrow("00002",borrowdate)));
             Assert.AreEqual("We don't have this book!", Convert.ToString(b.Borrow("00010",borrowdate)));
+        }
+
+        [TestMethod]
+        public void Search_Keyword()
+        {
+            Search test = new Search();
+
+            Assert.AreEqual("00001 書本A 作者a 0 0 0", test.Search_by_Keyword("書本A"));
+            Assert.AreEqual("00007 小王子 安東尼·德聖艾修伯里 0 0 0", test.Search_by_Keyword("小王子"));
+            Assert.AreEqual("找不到符合搜尋字詞的書籍。", test.Search_by_Keyword("acv"));
+        
         }
     }
 }
