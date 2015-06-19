@@ -21,6 +21,7 @@ namespace Team1
                     return Split[0] + " " + Split[1] + " " + Split[2] + " " + Split[3] + " " + Split[4] + " " + Split[5];
                 }         
             }
+            sr.Close();
             return "No Book Found!";    
         }
 
@@ -38,6 +39,7 @@ namespace Team1
                     //改檔 history.txt 把後面日期給消掉
                 }
             }
+            sr.Close();
             return "No Book Found!";
         }
 
@@ -55,6 +57,7 @@ namespace Team1
                 }
             }
             return "No Book Found!";
+            sr.Close();
         }
 
         public string CanReturnInSpecificDate(String borrowornot, DateTime now)

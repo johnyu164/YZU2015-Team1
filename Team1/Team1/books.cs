@@ -21,7 +21,7 @@ namespace Team1
 
         };
 
-        BookInformation[] bookinformation = new BookInformation[20];
+        private BookInformation[] bookinformation = new BookInformation[20];
         int Datacount = 0;
         public FindBook()
         {
@@ -59,6 +59,7 @@ namespace Team1
                 }
             }
             Datacount--;//修正最後一次while
+            sr.Close();
         }
 
 
@@ -120,7 +121,6 @@ namespace Team1
 
             return false;
         }
-
 
 
     }

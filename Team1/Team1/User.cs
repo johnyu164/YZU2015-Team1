@@ -108,6 +108,7 @@ namespace Team1
                     Datacount++;
                 }
             }
+            sr.Close();
         }
 
         public string findinformation(String number)
