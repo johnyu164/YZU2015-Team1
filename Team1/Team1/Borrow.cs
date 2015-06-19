@@ -15,7 +15,7 @@ namespace Team1
         private string borrowbooknumber;
         private FindBook bookdata = new FindBook();
         private Login user = new Login();
-<<<<<<< HEAD
+
         struct BookInformation
         {
             public string booknumber;
@@ -24,10 +24,6 @@ namespace Team1
             public bool borrowornot;
         };
         private BookInformation[] bookinformation = new BookInformation[20];
-   
-        
-=======
->>>>>>> origin/master
 
         public BorrowBook(string ID , string PWD, string num)
         {
@@ -52,58 +48,66 @@ namespace Team1
                 if (bookdata.borrowbooks(booknumber))
                 {
                     Sentence = "Success borrow book " + booknumber + ",Return day:" + returndate;
-
-                    FileStream fs = new FileStream("..\\..\\Library.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);//有BUG  找不出原因  by : 陳鈞翰
-
-                    var sr =new  StreamReader(fs);
-                    var Library_sw = new StreamWriter(fs);
-
-                    String line;
-                    int Datacount = 0;
-                    while ((line = sr.ReadLine()) != null)
+                    
+                    //測試無法過的原因是因為有可能會同時2個function去存取同一個檔案,也就是OS學的Critical-Section Problem
+                    //所以寫了WaitReady function,在執行動作前先去判斷檔案是否正被其他動作所使用,若是則等待
+                    bool waitready = WaitReady("..\\..\\Library.txt");
+                    if (waitready)
                     {
-                        if (Datacount == 0)
-                        {
-                            Datacount++;
-                        }
-                        else
-                        {
-                            String[] sr_split = line.Split(' ');
-                            bookinformation[Datacount - 1].booknumber = sr_split[0];
-                            bookinformation[Datacount - 1].bookname = sr_split[1];
-                            bookinformation[Datacount - 1].writer = sr_split[2];
-                            if (sr_split[3] == "0")
-                                bookinformation[Datacount - 1].borrowornot = true;
-                            else
-                                bookinformation[Datacount - 1].borrowornot = false;
+                        FileStream fs = new FileStream("..\\..\\Library.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    }
 
-                            String[] splitdate1 = sr_split[4].Split('/');
-                            String[] splitdate2 = sr_split[4].Split('/');                     
+                    //FileStream fs = new FileStream("..\\..\\Library.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);//有BUG  找不出原因  by : 陳鈞翰
+
+                    //var sr =new  StreamReader(fs);
+                    //var Library_sw = new StreamWriter(fs);
+
+                    //String line;
+                    //int Datacount = 0;
+                    //while ((line = sr.ReadLine()) != null)
+                    //{
+                    //    if (Datacount == 0)
+                    //    {
+                    //        Datacount++;
+                    //    }
+                    //    else
+                    //    {
+                    //        String[] sr_split = line.Split(' ');
+                    //        bookinformation[Datacount - 1].booknumber = sr_split[0];
+                    //        bookinformation[Datacount - 1].bookname = sr_split[1];
+                    //        bookinformation[Datacount - 1].writer = sr_split[2];
+                    //        if (sr_split[3] == "0")
+                    //            bookinformation[Datacount - 1].borrowornot = true;
+                    //        else
+                    //            bookinformation[Datacount - 1].borrowornot = false;
+
+                    //        String[] splitdate1 = sr_split[4].Split('/');
+                    //        String[] splitdate2 = sr_split[4].Split('/');                     
                              
-                            Datacount++;
-                        }
-                    }
-                    Datacount--;//修正最後一次while
-                    sr.Close();
+                    //        Datacount++;
+                    //    }
+                    //}
+                    //Datacount--;//修正最後一次while
+                    //sr.Close();
 
-                    String writein;
+                    //String writein;
                    
-                    //
-                    int i = 0;
-                    while (bookinformation[i].bookname != null)//
-                    {
+                    ////
+                    //int i = 0;
+                    //while (bookinformation[i].bookname != null)//
+                    //{
 
-                        if (bookinformation[i].booknumber == booknumber)
-                            writein = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer + " " + "1" + " " + borrowdate + " " + returndate;
+                    //    if (bookinformation[i].booknumber == booknumber)
+                    //        writein = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer + " " + "1" + " " + borrowdate + " " + returndate;
 
-                        else
-                            writein = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer;
+                    //    else
+                    //        writein = bookinformation[i].booknumber + " " + bookinformation[i].bookname + " " + bookinformation[i].writer;
 
-                        Library_sw.Write(writein);
-                        writein = "";
-                        i++;
-                    }
-                    Library_sw.Close();
+                    //    Library_sw.Write(writein);
+                    //    writein = "";
+                    //    i++;
+                    //}
+                    //Library_sw.Close();
                     /*writein = "";
                     StreamReader User_sr = new StreamReader("..\\..\\User.txt", Encoding.Default);
                     StreamWriter User_sw = new StreamWriter("..\\..\\User.txt",true);
@@ -135,6 +139,43 @@ namespace Team1
             return Sentence;
         }
 
+        private bool WaitReady(string _strSourceFileName)
+        {
+            int i = 0;
+            bool bResult = false;
 
+            while (i < 20)//Retry 20次
+            {
+                try
+                {
+                    using (Stream stream = System.IO.File.Open(_strSourceFileName, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                    {
+                        if (stream != null)
+                        {
+                            bResult = true;
+                            break;
+                        }
+                    }
+                }
+                catch (FileNotFoundException ex)
+                {
+                    bResult = false;
+                }
+                catch (IOException ex)
+                {
+                    bResult = false;
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    bResult = false;
+                }
+                finally
+                {
+                    i++;
+                    System.Threading.Thread.Sleep(500);
+                }
+            }
+            return bResult;
+        }
     }
 }
