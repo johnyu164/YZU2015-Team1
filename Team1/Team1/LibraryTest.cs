@@ -125,11 +125,34 @@ namespace Team1
         public void Search_Keyword()
         {
             Search test = new Search();
+            string[] result = new string[20];
 
-            Assert.AreEqual("00001 書本A 作者a 0 0 0", test.Search_by_Keyword("書本A"));
-            Assert.AreEqual("00007 小王子 安東尼·德聖艾修伯里 0 0 0", test.Search_by_Keyword("小王子"));
-            Assert.AreEqual("找不到符合搜尋字詞的書籍。", test.Search_by_Keyword("acv"));
-        
+            Assert.AreEqual("搜尋結果為 1 筆。", test.Search_by_Keyword("書本A", result));   //以書本名搜尋
+            Assert.AreEqual("00001 書本A 作者a 在架上", result[0]);      //搜尋結果
+
+            Assert.AreEqual("搜尋結果為 3 筆。", test.Search_by_Keyword("作者c", result));   //以作者名搜尋
+            Assert.AreEqual("00003 書本C 作者c 在架上", result[0]);
+            Assert.AreEqual("00004 書本C 作者c 借出中 應還日期2015/8/7", result[1]);
+            Assert.AreEqual("00006 書本C 作者c 借出中 應還日期2015/6/12", result[2]);
+
+            Assert.AreEqual("搜尋結果為 1 筆。", test.Search_by_Keyword("00005", result));   //以書號名搜尋
+            Assert.AreEqual("00005 書本D 作者a 在架上", result[0]);
+
+            Assert.AreEqual("搜尋結果為 1 筆。", test.Search_by_Keyword("小王", result));    //部分書名搜尋
+            Assert.AreEqual("00007 小王子 安東尼·德聖艾修伯里 在架上", result[0]);
+            Assert.AreEqual("搜尋結果為 7 筆。", test.Search_by_Keyword("哈利波特", result));
+            Assert.AreEqual("00078 哈利波特-神祕的魔法石 J·K·羅琳 在架上", result[0]); 
+            Assert.AreEqual("00099 哈利波特-消失的密室 J·K·羅琳 借出中 應還日期2015/7/1", result[1]); 
+            Assert.AreEqual("00111 哈利波特-阿茲卡班的逃犯 J·K·羅琳 借出中 應還日期2015/7/2", result[2]); 
+            Assert.AreEqual("02561 哈利波特-火盃的考驗 J·K·羅琳 在架上", result[3]); 
+            Assert.AreEqual("03312 哈利波特-鳳凰會的密令 J·K·羅琳 在架上", result[4]); 
+            Assert.AreEqual("03613 哈利波特-混血王子的背叛 J·K·羅琳 借出中 應還日期2015/6/30", result[5]); 
+            Assert.AreEqual("15014 哈利波特-死神的聖物 J·K·羅琳 在架上", result[6]);
+
+            Assert.AreEqual("搜尋結果為 7 筆。", test.Search_by_Keyword("K·羅琳", result));  //部分作者名搜尋
+
+            Assert.AreEqual("找不到符合搜尋字詞的書籍。", test.Search_by_Keyword("hello", result));  //沒有結果
+            Assert.AreEqual("找不到符合搜尋字詞的書籍。", test.Search_by_Keyword("小屁王", result)); 
         }
     }
 }
