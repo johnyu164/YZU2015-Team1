@@ -86,6 +86,7 @@ namespace Team1
 
         borrowinformation[] borrowinfo = new borrowinformation[50];
         int Datacount = 0;
+        
 
         public BorrowInfo()
         {
@@ -111,20 +112,22 @@ namespace Team1
             sr.Close();
         }
 
-        public string findinformation(String number)
+        public string findinformation(String number, string[] result)
         {
+            int count = 0;
             string Sentence = "";
             for (int i = 0; i < Datacount; i++)
             {
                 if (String.Compare(borrowinfo[i].studentnumber, number) == 0)
                 {
-                    Sentence = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber + " " + borrowinfo[i].dateborrow + " " + borrowinfo[i].datereturn;
+                    result[count] = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber + " " + borrowinfo[i].dateborrow + " " + borrowinfo[i].datereturn;
+                    count++;
                 }
             }
 
-            if (Sentence == "")
-                Sentence = "帳號不存在!";
-
+           /* if (Sentence == "")
+                Sentence = "帳號不存在!";*/
+            count = 0;
             return Sentence;
         }
     }
