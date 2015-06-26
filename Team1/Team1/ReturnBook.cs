@@ -46,7 +46,7 @@ namespace Team1
         }
 
         //Return book, so we need to change the data in history.txt. 新增借還書紀錄
-        public string Fixed_the_history_of_borrow_and_return(String data)
+       /* public string Fixed_the_history_of_borrow_and_return(String data)
         {
             String[] Split = data.Split(' ');
             //StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
@@ -57,7 +57,7 @@ namespace Team1
             sw.WriteLine(str);
             sw.Close();
             return "Do return in history.txt";
-        }
+        }*/
 
         public string Load_Number_for_borrow(String number)
         {
