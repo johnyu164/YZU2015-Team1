@@ -9,20 +9,54 @@ namespace Team1
 {
     class ReturnBook
     {
+        string local_data;
         public string Load_Number_for_Library(String number)
         {
             StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
-            String line;
+            String line, data;
             while ((line = sr.ReadLine()) != null)
             {
                 String[] Split = line.Split(' ');
                 if (Split[0] == number)
                 {
-                    return Split[0] + " " + Split[1] + " " + Split[2] + " " + Split[3] + " " + Split[4] + " " + Split[5];
+                    data = Split[0] + " " + Split[1] + " " + Split[2] + " " + Split[3] + " " + Split[4] + " " + Split[5];      
+                    return data;
                 }         
             }
             sr.Close();
             return "No Book Found!";    
+        }
+
+        //Return book, so we need to change the data in Library.txt. 借書時間與應還時間改為"0"
+        public string Fixed_the_time_of_borrow_and_return(String data)
+        {
+            String[] Split = data.Split(' ');
+            if (Split[3]=="1")
+            {
+                StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
+                String str = sr.ReadToEnd();
+                str = str.Replace(data, Split[0] + " " + Split[1] + " " + Split[2] + " " + "0 0 0");
+                sr.Close();
+                StreamWriter sw = new StreamWriter("..\\..\\Library_temp.txt");
+                sw.WriteLine(str);
+                sw.Close();
+                return "Do return in library.txt";
+            }
+            return "書本未被借出，無法歸還!!";
+        }
+
+        //Return book, so we need to change the data in history.txt. 新增借還書紀錄
+        public string Fixed_the_history_of_borrow_and_return(String data)
+        {
+            String[] Split = data.Split(' ');
+            //StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
+            //String str = sr.ReadToEnd();
+            //str = str.Replace(data, Split[0] + " " + Split[1] + " " + Split[2] + " " + "0 0 0");
+            //sr.Close();
+            StreamWriter sw = new StreamWriter("..\\..\\Library_temp.txt");
+            sw.WriteLine(str);
+            sw.Close();
+            return "Do return in history.txt";
         }
 
         public string Load_Number_for_borrow(String number)
@@ -56,8 +90,8 @@ namespace Team1
                     return Split[0] + "書本已歸還";
                 }
             }
-            return "No Book Found!";
             sr.Close();
+            return "No Book Found!";
         }
 
         public string CanReturnInSpecificDate(String borrowornot, DateTime now)

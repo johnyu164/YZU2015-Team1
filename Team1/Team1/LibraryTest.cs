@@ -115,7 +115,10 @@ namespace Team1
             DateTime testtime = new DateTime(2015,6,13);
 
             Assert.AreEqual("逾期1天,要繳交罰鍰50元", Rb.CanReturnInSpecificDate(Rb.Load_Number_for_Library("00006"),testtime));
-                
+
+
+            Assert.AreEqual("Do return in library.txt", Rb.Fixed_the_time_of_borrow_and_return(Rb.Load_Number_for_Library("00002")));
+            Assert.AreEqual("書本未被借出，無法歸還!!", Rb.Fixed_the_time_of_borrow_and_return(Rb.Load_Number_for_Library("00001")));
         }
 
         [TestMethod]
