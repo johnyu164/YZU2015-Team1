@@ -56,8 +56,9 @@ namespace Team1
                     return Split[0] + "書本已歸還";
                 }
             }
-            return "No Book Found!";
             sr.Close();
+            return "No Book Found!";
+           
         }
 
         public string CanReturnInSpecificDate(String borrowornot, DateTime now)

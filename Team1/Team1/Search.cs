@@ -24,7 +24,7 @@ namespace Team1
         int count;
         int resultcount;
 
-        public string Search_by_Keyword(string keyword, string[] searchresult)
+        public Search()
         {
             count = 0;
             resultcount = 0;
@@ -53,6 +53,11 @@ namespace Team1
             count--;
             sr.Close();
 
+        }
+
+
+        public string Search_by_Keyword(string keyword, string[] searchresult)
+        {
             string response = "";
            
             for (int i = 1; i < count; i++)

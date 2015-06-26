@@ -17,7 +17,7 @@ namespace Team1
             public string writer;
             public bool borrowornot;
             //public DateTime RealReturnDate;
-           // public DateTime ShouldReturnDate;
+            //public DateTime ShouldReturnDate;
 
         };
 
@@ -44,10 +44,10 @@ namespace Team1
                     else
                         bookinformation[Datacount - 1].borrowornot = false;
 
-                    String[] splitdate1 = split[4].Split('/');
-                    String[] splitdate2 = split[4].Split('/');
+                    /*String[] splitdate1 = split[4].Split('/');
+                    String[] splitdate2 = split[5].Split('/');
                     
-                   /* bookinformation[Datacount - 1].RealReturnDate.AddYears(Convert.ToInt32(splitdate1[0]));
+                    bookinformation[Datacount - 1].RealReturnDate.AddYears(Convert.ToInt32(splitdate1[0]));
                     bookinformation[Datacount - 1].RealReturnDate.AddMonths(Convert.ToInt32(splitdate1[1]));
                     bookinformation[Datacount - 1].RealReturnDate.AddDays(Convert.ToInt32(splitdate1[2]));
 
