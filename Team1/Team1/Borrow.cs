@@ -15,7 +15,7 @@ namespace Team1
         private string borrowbooknumber;
         private FindBook bookdata = new FindBook();
         private Login user = new Login();
-        private BookInformation[] bookinformation = new BookInformation[20];
+        private BookInformation[] bookinformation = new BookInformation[50];
         private int Datacount = 0;
         struct BookInformation
         {
@@ -47,10 +47,11 @@ namespace Team1
             //測試無法過的原因是因為有可能會同時2個function去存取同一個檔案,也就是OS學的Critical-Section Problem
             //所以寫了WaitReady function,在執行動作前先去判斷檔案是否正被其他動作所使用,若是則等待
             // bool waitready = WaitReady("..\\..\\Library.txt");
-                   
-            StreamReader sr = new StreamReader("..\\..\\history.txt", Encoding.Default);
+
+            StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
             
             String line;
+            Datacount = 0;
 
             while ((line = sr.ReadLine()) != null)
             {
@@ -65,7 +66,8 @@ namespace Team1
                     bookinformation[Datacount - 1].bookname = sr_split[1];
                     bookinformation[Datacount - 1].writer = sr_split[2];
                     bookinformation[Datacount - 1].borrowornot = sr_split[3];
-                    bookinformation[Datacount - 1].borrowornot = sr_split[4];
+                    bookinformation[Datacount - 1].borrowdateglobe = sr_split[4];
+                    bookinformation[Datacount - 1].returndateglobe = sr_split[5];
                     /*if(sr_split[4]!="0")
                     {
                         String[] splitdate1 = sr_split[4].Split('/');
@@ -80,11 +82,7 @@ namespace Team1
                         bookinformation[Datacount - 1].borrowdateglobe.AddMonths(0);
                         bookinformation[Datacount - 1].borrowdateglobe.AddDays(0);
                     }
-                   */
-
-                    bookinformation[Datacount - 1].returndateglobe = sr_split[5];
-
-   
+                   */                 
                     Datacount++;
                 }
             }
@@ -121,7 +119,8 @@ namespace Team1
                             bookinformation[i].borrowornot = "1";
                             bookinformation[i].borrowdateglobe = borrowdatestr;
                             bookinformation[i].returndateglobe = returndate;
-                        }                      
+                        }
+                        i++;
                     }                   
                 }
                 else if (!bookdata.borrowbooks(booknumber))
@@ -131,7 +130,7 @@ namespace Team1
             return Sentence;
         }
 
-        public void write()
+        public void write()// 行數還有問題
         {
 
             FileStream fs = new FileStream("..\\..\\Library.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
