@@ -75,8 +75,12 @@ namespace Team1
             Assert.AreEqual("", bi.findinformation("003", result));
             Assert.AreEqual("003 00004 2015/7/17 2015/8/17", result[0]);
 
-            //Assert.AreEqual("帳號不存在!", bi.findinformation("005"));
-            //Assert.AreEqual("帳號不存在!", bi.findinformation("006"));
+            Assert.AreEqual("", bi.findinformation("004", result));
+            Assert.AreEqual("004 00005 2015/7/7 2015/8/7", result[0]);
+            Assert.AreEqual("004 00006 2015/7/9 2015/8/9", result[1]);
+
+            Assert.AreEqual("帳號不存在或是尚無借閱紀錄!", bi.findinformation("005", result));
+            Assert.AreEqual("帳號不存在或是尚無借閱紀錄!", bi.findinformation("006", result)); 
         }
 
         [TestMethod]

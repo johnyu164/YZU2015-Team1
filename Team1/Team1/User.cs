@@ -123,10 +123,11 @@ namespace Team1
                     result[count] = borrowinfo[i].studentnumber + " " + borrowinfo[i].booknumber + " " + borrowinfo[i].dateborrow + " " + borrowinfo[i].datereturn;
                     count++;
                 }
+
+                if (i == (Datacount - 1) && count == 0)
+                    Sentence = "帳號不存在或是尚無借閱紀錄!";               
             }
 
-           /* if (Sentence == "")
-                Sentence = "帳號不存在!";*/
             count = 0;
             return Sentence;
         }
