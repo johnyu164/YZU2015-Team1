@@ -21,36 +21,36 @@ namespace Team1
         };
 
         bookinformation[] bookinfo = new bookinformation[50];
-        int count;
-        int resultcount;
+        int info_amount;
+        int result_amount;
 
         public Search()
         {
-            count = 0;
-            resultcount = 0;
+            info_amount = 0;
+            result_amount = 0;
 
             StreamReader sr = new StreamReader("..\\..\\Library.txt", Encoding.Default);
             String str;
 
             while ((str = sr.ReadLine()) != null)
             {
-                if (count == 0)
+                if (info_amount == 0)
                 {
-                    count++;
+                    info_amount++;
                 }
                 else
                 {
                     String[] split = str.Split(' ');
-                    bookinfo[count - 1].booknumber = split[0];
-                    bookinfo[count - 1].bookname = split[1];
-                    bookinfo[count - 1].writer = split[2];
-                    bookinfo[count - 1].ifborrow = split[3];
-                    bookinfo[count - 1].borrowdate = split[4];
-                    bookinfo[count - 1].returndate = split[5];
+                    bookinfo[info_amount - 1].booknumber = split[0];
+                    bookinfo[info_amount - 1].bookname = split[1];
+                    bookinfo[info_amount - 1].writer = split[2];
+                    bookinfo[info_amount - 1].ifborrow = split[3];
+                    bookinfo[info_amount - 1].borrowdate = split[4];
+                    bookinfo[info_amount - 1].returndate = split[5];
                 }
-                count++;
+                info_amount++;
             }
-            count--;
+            info_amount--;
             sr.Close();
 
         }
@@ -60,26 +60,26 @@ namespace Team1
         {
             string response = "";
            
-            for (int i = 1; i < count; i++)
+            for (int i = 1; i < info_amount; i++)
             {
                 if (bookinfo[i].booknumber == keyword || bookinfo[i].bookname.Contains(keyword) || bookinfo[i].writer.Contains(keyword))
                 {
-                    searchresult[resultcount] = bookinfo[i].booknumber + " " + bookinfo[i].bookname + " " + bookinfo[i].writer;
+                    searchresult[result_amount] = bookinfo[i].booknumber + " " + bookinfo[i].bookname + " " + bookinfo[i].writer;
                     if (bookinfo[i].ifborrow == "0")
-                        searchresult[resultcount] += " 在架上";
+                        searchresult[result_amount] += " 在架上";
                     else
-                        searchresult[resultcount] += (" 借出中 應還日期" + bookinfo[i].returndate);
+                        searchresult[result_amount] += (" 借出中 應還日期" + bookinfo[i].returndate);
                       
-                    resultcount++;
+                    result_amount++;
                 }
 
-                if (i == (count - 1) && resultcount == 0)
+                if (i == (info_amount - 1) && result_amount == 0)
                     response = "找不到符合搜尋字詞的書籍。";
-                else if (i == (count - 1))
-                    response = "搜尋結果為 " + resultcount.ToString() + " 筆。";
+                else if (i == (info_amount - 1))
+                    response = "搜尋結果為 " + result_amount.ToString() + " 筆。";
             }
 
-            resultcount = 0;
+            result_amount = 0;
             return response;
         }
     }

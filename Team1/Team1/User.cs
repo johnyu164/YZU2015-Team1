@@ -74,9 +74,9 @@ namespace Team1
     }
 
 
-    class BorrowInfo
+    class historyInfo
     {
-        struct borrowinformation
+        struct borrowhistoryinformation
         {
             public string studentnumber;
             public string booknumber;
@@ -84,11 +84,11 @@ namespace Team1
             public string datereturn;
         };
 
-        borrowinformation[] borrowinfo = new borrowinformation[50];
+        borrowhistoryinformation[] borrowinfo = new borrowhistoryinformation[50];
         int Datacount = 0;
         
 
-        public BorrowInfo()
+        public historyInfo()
         {
             StreamReader sr = new StreamReader("..\\..\\history.txt", Encoding.Default);
             String line;
@@ -112,7 +112,7 @@ namespace Team1
             sr.Close();
         }
 
-        public string findinformation(String number, string[] result)
+        public string historyinformation(String number, string[] result)
         {
             int count = 0;
             string Sentence = "";
@@ -133,6 +133,4 @@ namespace Team1
         }
     }
 
-
-    
 }
