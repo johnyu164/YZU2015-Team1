@@ -9,7 +9,13 @@ namespace Team1
 {
     public class Search
     {
-
+        /*
+        struct searchingresult
+        {
+            public string searchresult;
+            public string[] bookinfo = new string[20];
+        }
+        */
          struct bookinformation
         {
             public string booknumber;
@@ -52,9 +58,9 @@ namespace Team1
             }
             info_amount--;
             sr.Close();
-
         }
 
+     //   searchingresult result;
 
         public string Search_by_Keyword(string keyword, string[] searchresult)
         {
@@ -69,14 +75,23 @@ namespace Team1
                         searchresult[result_amount] += " 在架上";
                     else
                         searchresult[result_amount] += (" 借出中 應還日期" + bookinfo[i].returndate);
-                      
+                   /*
+                    result.bookinfo[result_amount] = bookinfo[i].booknumber + " " + bookinfo[i].bookname + " " + bookinfo[i].writer;
+                    if (bookinfo[i].ifborrow == "0")
+                        result.bookinfo[result_amount] += " 在架上";
+                    else
+                        result.bookinfo[result_amount] += (" 借出中 應還日期" + bookinfo[i].returndate);
+                   */
                     result_amount++;
                 }
 
                 if (i == (info_amount - 1) && result_amount == 0)
                     response = "找不到符合搜尋字詞的書籍。";
+                   // result.searchresult = "找不到符合搜尋字詞的書籍。";
                 else if (i == (info_amount - 1))
-                    response = "搜尋結果為 " + result_amount.ToString() + " 筆。";
+                    response = "搜尋結果為 " + result_amount.ToString() + " 筆。"; 
+                  //  result.searchresult = "搜尋結果為 " + result_amount.ToString() + " 筆。";
+            
             }
 
             result_amount = 0;
