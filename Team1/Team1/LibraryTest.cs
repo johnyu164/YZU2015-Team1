@@ -61,27 +61,30 @@ namespace Team1
             Assert.AreEqual(3, booknum[1]);
         }
 
+
         [TestMethod]
-        public void BookBorrowInfo()
+        public void BookBorrowHistoryInfo()
         {
-            BorrowInfo bi = new BorrowInfo();
+            historyInfo hi = new historyInfo();
             string[] result = new string[20];
-            Assert.AreEqual("", bi.findinformation("001", result));
+            Assert.AreEqual("", hi.historyinformation("001", result));
             Assert.AreEqual("001 00001 2015/6/6 2015/7/6", result[0]);
 
-            Assert.AreEqual("", bi.findinformation("002", result));
+            Assert.AreEqual("", hi.historyinformation("002", result));
             Assert.AreEqual("002 00002 2015/7/7 2015/8/7", result[0]);
 
-            Assert.AreEqual("", bi.findinformation("003", result));
+            Assert.AreEqual("", hi.historyinformation("003", result));
             Assert.AreEqual("003 00004 2015/7/17 2015/8/17", result[0]);
 
-            Assert.AreEqual("", bi.findinformation("004", result));
+            Assert.AreEqual("", hi.historyinformation("004", result));
             Assert.AreEqual("004 00005 2015/7/7 2015/8/7", result[0]);
             Assert.AreEqual("004 00006 2015/7/9 2015/8/9", result[1]);
 
-            Assert.AreEqual("帳號不存在或是尚無借閱紀錄!", bi.findinformation("005", result));
-            Assert.AreEqual("帳號不存在或是尚無借閱紀錄!", bi.findinformation("006", result)); 
+            Assert.AreEqual("帳號不存在或是尚無借閱紀錄!", hi.historyinformation("005", result));
+            Assert.AreEqual("帳號不存在或是尚無借閱紀錄!", hi.historyinformation("006", result));
         }
+
+
 
         [TestMethod]
         public void ReturnBook_Load()
